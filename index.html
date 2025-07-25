@@ -25,11 +25,23 @@
     }
 
     .section-title {
-      font-size: 1.3em;
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: bold;
       margin-bottom: 20px;
-      padding-left: 10px;
-      border-left: 4px solid #007bff;
-      color: #222;
+      color: #333;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.59 13.41l-8-8A2 2 0 0011.17 5H5a2 2 0 00-2 2v6.17a2 2 0 00.59 1.41l8 8a2 2 0 002.83 0l6.17-6.17a2 2 0 000-2.83zM7 10a1 1 0 111-1 1 1 0 01-1 1z"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 10px;
     }
 
     .card-grid {
