@@ -6,137 +6,129 @@
   <title>我的导航</title>
 
   <style>
-    /* 页面基础样式设置 */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: #f2f3f5; /* 背景颜色 */
+      background: #f2f3f5;
       margin: 0;
-      padding: 30px 20px; /* 页面内边距 */
+      padding: 30px 20px;
     }
 
-    /* 页面标题样式 */
     h1 {
       text-align: center;
       font-size: 2.4em;
       font-weight: bold;
       margin-bottom: 30px;
-      color: #222; /* 标题颜色 */
+      color: #222;
     }
 
-    /* 每个分类模块的样式 */
     .section {
-      margin-bottom: 50px; /* 分类模块与模块之间的间距 */
+      margin-bottom: 50px;
     }
 
-    /* 分类标题的样式，包含图标 */
     .section-title {
       display: flex;
       align-items: center;
       font-size: 1.1em;
       font-weight: bold;
-      margin-bottom: 20px; /* 分类标题底部的间距 */
-      color: #333; /* 标题文字颜色 */
+      margin-bottom: 20px;
+      color: #333;
     }
 
-    /* 分类标题中的左侧图标样式 */
     .section-title svg {
       width: 20px;
       height: 20px;
       margin-right: 8px;
-      fill: #666; /* 图标颜色 */
+      fill: #666;
     }
 
-    /* 卡片布局的网格样式，每行显示两个卡片 */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 强制每行两个卡片 */
-      gap: 20px; /* 卡片之间的间距 */
-      max-width: 800px; /* 最大宽度 */
-      margin: 0 auto; /* 居中显示 */
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* 每个卡片的样式 */
+    /* 卡片样式：设置固定高度和固定宽度 */
     .card {
       display: flex;
       align-items: center;
-      background: #ffffff; /* 卡片背景颜色 */
-      border-radius: 14px; /* 圆角效果 */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 卡片阴影 */
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       text-decoration: none;
-      color: inherit; /* 保持文字颜色继承 */
-      padding: 15px 18px; /* 内边距 */
-      transition: all 0.2s ease; /* 动画效果 */
-      height: 40px; /* 卡片高度固定 */
+      color: inherit;
+      padding: 5px 18px;
+      transition: all 0.2s ease;
+      height: 40px; /* 固定卡片高度 */
+      min-width: 200px; /* 固定宽度 */
     }
 
-    /* 鼠标悬停时卡片上移效果 */
+    /* 鼠标悬停时卡片微微上移 */
     .card:hover {
-      transform: translateY(-3px); /* 悬停时上移 */
+      transform: translateY(-3px);
     }
 
-    /* 卡片左侧图标的样式 */
+    /* 左侧图标样式 */
     .card-icon {
-      width: 42px;
-      height: 42px;
-      margin-right: 16px; /* 图标与文字之间的间距 */
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
       flex-shrink: 0;
-      border-radius: 50%; /* 圆形背景 */
-      background-color: #f2f2f2; /* 背景颜色 */
+      border-radius: 50%;
+      background-color: #f2f2f2;
       display: flex;
       align-items: center;
-      justify-content: center; /* 居中显示图标 */
+      justify-content: center;
     }
 
-    /* 图标图片的大小和适配方式 */
     .card-icon img {
-      width: 26px;
-      height: 26px;
-      object-fit: contain; /* 图片自适应尺寸 */
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
     }
 
-    /* 卡片右侧的文字信息区域样式 */
+    /* 右侧文字信息的样式 */
     .card-info {
       display: flex;
-      flex-direction: column; /* 文字垂直排列 */
-      justify-content: center; /* 垂直居中 */
+      flex-direction: column;
+      justify-content: center;
     }
 
-    /* 卡片标题的样式 */
     .card-title {
       font-weight: bold;
-      font-size: 1em;
-      margin-bottom: 4px; /* 标题与描述之间的间距 */
-    }
-
-    /* 卡片描述的样式（单行，超出显示省略号） */
-    .card-desc {
       font-size: 0.9em;
-      color: #666; /* 描述文字颜色 */
-      line-height: 1.4;
-      white-space: nowrap; /* 不换行 */
-      overflow: hidden; /* 隐藏超出部分 */
-      text-overflow: ellipsis; /* 超出部分显示省略号 */
+      margin-bottom: 4px;
     }
 
-    /* 页脚样式 */
+    /* 卡片描述：单行显示超长文字用省略号 */
+    .card-desc {
+      font-size: 0.8em;
+      color: #666;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     footer {
       margin-top: 60px;
       text-align: center;
       font-size: 0.8em;
-      color: #aaa; /* 页脚文字颜色 */
+      color: #aaa;
     }
 
     /* 手机端适配 */
     @media (max-width: 600px) {
       html {
-        font-size: 15px; /* 调整字体大小 */
+        font-size: 15px;
       }
       body {
-        padding: 20px 10px; /* 调整内边距 */
+        padding: 20px 10px;
       }
       .card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 手机端保持双列 */
-        gap: 14px; /* 调整卡片间距 */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
       }
     }
   </style>
@@ -156,7 +148,6 @@
     </div>
 
     <div class="card-grid">
-      <!-- 百度卡片 -->
       <a class="card" href="https://www.baidu.com" target="_blank">
         <div class="card-icon">
           <img src="https://www.baidu.com/favicon.ico" alt="百度">
@@ -167,7 +158,6 @@
         </div>
       </a>
 
-      <!-- 哔哩哔哩卡片 -->
       <a class="card" href="https://www.bilibili.com" target="_blank">
         <div class="card-icon">
           <img src="https://www.bilibili.com/favicon.ico" alt="哔哩哔哩">
@@ -178,7 +168,6 @@
         </div>
       </a>
 
-      <!-- 知乎卡片 -->
       <a class="card" href="https://www.zhihu.com" target="_blank">
         <div class="card-icon">
           <img src="https://www.zhihu.com/favicon.ico" alt="知乎">
@@ -201,7 +190,6 @@
     </div>
 
     <div class="card-grid">
-      <!-- Coursera 卡片 -->
       <a class="card" href="https://www.coursera.org" target="_blank">
         <div class="card-icon">
           <img src="https://www.coursera.org/favicon.ico" alt="Coursera">
@@ -212,7 +200,6 @@
         </div>
       </a>
 
-      <!-- edX 卡片 -->
       <a class="card" href="https://www.edx.org" target="_blank">
         <div class="card-icon">
           <img src="https://www.edx.org/favicon.ico" alt="edX">
