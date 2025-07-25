@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>我的导航</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font/font/simple-icons.min.css">
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -38,42 +37,60 @@
       height: 22px;
       margin-right: 10px;
       fill: #555;
-      flex-shrink: 0;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
 
     .card {
+      display: flex;
+      align-items: center;
       background: #fff;
-      padding: 20px;
+      padding: 15px 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       text-decoration: none;
       color: inherit;
+      transition: transform 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
 
-    .card .icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: #007bff;
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      margin-right: 16px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
     }
 
-    .card .title {
-      font-weight: bold;
-      font-size: 1.1em;
+    .card-icon img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1em;
       margin-bottom: 5px;
     }
 
-    .card .desc {
+    .card-desc {
       font-size: 0.9em;
       color: #666;
     }
@@ -91,38 +108,41 @@
 
   <div class="section">
     <div class="section-title">
-      <!-- 左侧标签图标（标准SVG） -->
       <svg viewBox="0 0 24 24">
         <path d="M21.41 11.58l-9-9A2 2 0 0010.17 2H5a2 2 0 00-2 2v5.17a2 2 0 00.59 1.42l9 9a2 2 0 002.83 0l6-6a2 2 0 000-2.83zM7 7a1 1 0 11-1 1 1 1 0 011-1z"/>
       </svg>
       常用工具
     </div>
+
     <div class="card-grid">
       <a class="card" href="https://www.baidu.com" target="_blank">
-        <div class="icon si si-baidu"></div>
-        <div class="title">百度</div>
-        <div class="desc">中国最大的搜索引擎</div>
+        <div class="card-icon">
+          <img src="https://www.baidu.com/favicon.ico" alt="百度">
+        </div>
+        <div class="card-info">
+          <div class="card-title">百度</div>
+          <div class="card-desc">中国最大的搜索引擎</div>
+        </div>
       </a>
-      <a class="card" href="https://www.bilibili.com" target="_blank">
-        <div class="icon si si-bilibili"></div>
-        <div class="title">哔哩哔哩</div>
-        <div class="desc">二次元视频网站</div>
-      </a>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">
-      <svg viewBox="0 0 24 24">
-        <path d="M21.41 11.58l-9-9A2 2 0 0010.17 2H5a2 2 0 00-2 2v5.17a2 2 0 00.59 1.42l9 9a2 2 0 002.83 0l6-6a2 2 0 000-2.83zM7 7a1 1 0 11-1 1 1 1 0 011-1z"/>
-      </svg>
-      学习社区
-    </div>
-    <div class="card-grid">
+      <a class="card" href="https://www.bilibili.com" target="_blank">
+        <div class="card-icon">
+          <img src="https://www.bilibili.com/favicon.ico" alt="B站">
+        </div>
+        <div class="card-info">
+          <div class="card-title">哔哩哔哩</div>
+          <div class="card-desc">二次元视频网站</div>
+        </div>
+      </a>
+
       <a class="card" href="https://www.zhihu.com" target="_blank">
-        <div class="icon si si-zhihu"></div>
-        <div class="title">知乎</div>
-        <div class="desc">中文问答社区</div>
+        <div class="card-icon">
+          <img src="https://www.zhihu.com/favicon.ico" alt="知乎">
+        </div>
+        <div class="card-info">
+          <div class="card-title">知乎</div>
+          <div class="card-desc">中文问答社区</div>
+        </div>
       </a>
     </div>
   </div>
