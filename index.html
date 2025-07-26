@@ -51,18 +51,18 @@
 
     /* 卡片样式：设置固定高度和固定宽度 */
     .card {
-      display: flex;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      text-decoration: none;
-      color: inherit;
-      padding: 5px 12px 5px 14px; /* 上右下左：让图标贴近左边 */
-      transition: all 0.2s ease;
+      display: flex; /* 使用 Flex 布局让图标和文字水平排列 */
+      align-items: center; /* 垂直方向居中对齐图标和文字 */
+      background: #ffffff; /* 背景颜色为纯白 */
+      border-radius: 14px; /* 设置圆角边框，提升视觉美观 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
+      text-decoration: none; /* 移除链接下划线 */
+      color: inherit;  /* 文字颜色继承外部设置，保持一致性 */
+      padding: 5px 12px 5px 14px; /* 内边距：上右下左，左边多一点让图标靠近左侧边缘 */
+      transition: all 0.2s ease; /* 所有变化添加动画过渡，使交互更顺滑 */
       height: 50px; /* 固定卡片高度 */
       min-width: 150px; /* 固定宽度 */
-      margin-bottom: 4px; /* 卡片之间的竖向距离 */
+      margin-bottom: 4px; /* 卡片与下一个卡片之间的垂直距离 */
     }
 
     /* 鼠标悬停时卡片微微上移 */
@@ -134,9 +134,10 @@
 
     /* 每一个图标按钮的样式 */
     .footer-icons a {
-      width: 44px; /* 图标容器宽度 */
-      height: 44px; /* 图标容器高度 */
-      background-color: #f2f2f2; /* 默认背景色为浅灰色 */
+      width: 40px; /* 图标容器宽度 */
+      height: 40px; /* 图标容器高度 */
+      background-color: #ffffff; /* 默认背景色为浅灰色 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
       border-radius: 50%; /* 设置为圆形 */
       display: flex; /* 使用 Flex 居中图标 */
       align-items: center; /* 垂直居中 */
@@ -152,14 +153,14 @@
 
     /* 图标本体的样式 */
     .footer-icons img {
-      width: 22px; /* 图标显示尺寸 */
-      height: 22px;
+      width: 24px; /* 图标显示尺寸 */
+      height: 24px;
       object-fit: contain; /* 保持原图比例缩放显示 */
     }
 
     /* 版权说明文本样式 */
     .footer-copy {
-      font-size: 0.85em; /* 比正文略小 */
+      font-size: 0.9em; /* 比正文略小 */
       color: #999; /* 更浅灰色，用于低强调信息 */
     }
 
