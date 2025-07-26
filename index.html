@@ -154,7 +154,7 @@
       background-color: #007BFF;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 12px;
       border-radius: 6px;
       font-size: 14px;
       cursor: pointer;
@@ -166,11 +166,18 @@
     }
 
     .fixed-buttons .toggle-mode-button {
-      background-color: #28a745; /* 设置按钮颜色 */
+      background-color: #28a745;
     }
 
     .fixed-buttons .toggle-mode-button:hover {
       background-color: #218838;
+    }
+
+    /* 图标样式 */
+    .fixed-buttons svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
     }
 
     /* 手机端适配 */
@@ -529,8 +536,19 @@
 
   <!-- 固定右侧的按钮区域 -->
   <div class="fixed-buttons">
-    <button class="top-button" onclick="scrollToTop()">返回顶部</button>
-    <button class="toggle-mode-button" onclick="toggleMode()">切换模式</button>
+    <!-- 返回顶部按钮：使用向上的箭头图标 -->
+    <button class="top-button" onclick="scrollToTop()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7-7-7 7"/>
+      </svg>
+    </button>
+
+    <!-- 切换模式按钮：使用太阳和月亮图标 -->
+    <button class="toggle-mode-button" onclick="toggleMode()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m-9-9h1m16 0h1m-5.93-5.93l.71.71m-10.86 0l-.71-.71m7.08 7.08l.71.71m-10.86 0l-.71-.71m1.97-4.83a3.5 3.5 0 111.97 4.83 3.5 3.5 0 01-1.97-4.83z"/>
+      </svg>
+    </button>
   </div>
 
   <footer>私人专用导航,最终解释权归本人所有,请勿传播</footer>
