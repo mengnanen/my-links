@@ -547,19 +547,19 @@
     <!-- 返回顶部按钮 -->
     <button class="top-button" onclick="scrollToTop()">
       <div class="icon-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Arrow_Up_Icon.svg" alt="返回顶部">
+        <img src="svg/6.svg" alt="返回顶部" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       </div>
     </button>
 
     <!-- 切换模式按钮 -->
     <button class="toggle-mode-button" onclick="toggleMode()">
       <div class="icon-container">
-        <img id="themeIcon" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Font_Awesome_5_solid_sun.svg" alt="切换模式">
+        <img id="themeIcon" src="svg/7.svg" alt="切换模式">
       </div>
     </button>
   </div>
 
-  <footer>私人专用导航,最终解释权归本人所有,请勿传播</footer>
+  <footer>王小二私人专用导航,最终解释权归本人所有,请勿传播</footer>
 
   <script>
     // 返回顶部按钮
@@ -572,10 +572,10 @@
       const currentTheme = document.documentElement.getAttribute('data-theme');
       if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('themeIcon').src = 'https://upload.wikimedia.org/wikipedia/commons/7/77/Font_Awesome_5_solid_sun.svg'; // 切换为太阳图标
+        document.getElementById('themeIcon').src = 'svg/7.svg'; // 切换为太阳图标
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('themeIcon').src = 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Font_Awesome_5_solid_moon.svg'; // 切换为月亮图标
+        document.getElementById('themeIcon').src = 'svg/8.svg'; // 切换为月亮图标
       }
     }
 
@@ -584,10 +584,10 @@
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       if (mediaQuery.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('themeIcon').src = 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Font_Awesome_5_solid_moon.svg'; // 默认月亮图标
+        document.getElementById('themeIcon').src = 'svg/8.svg'; // 默认月亮图标
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('themeIcon').src = 'https://upload.wikimedia.org/wikipedia/commons/7/77/Font_Awesome_5_solid_sun.svg'; // 默认太阳图标
+        document.getElementById('themeIcon').src = 'svg/7.svg'; // 默认太阳图标
       }
     });
   </script>
