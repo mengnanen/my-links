@@ -122,6 +122,32 @@
       color: #aaa;
     }
 
+    /* 固定右侧的按钮样式 */
+    .fixed-buttons {
+      position: fixed;
+      top: 50%; /* 居中显示 */
+      right: 20px;
+      transform: translateY(-50%); /* 垂直居中 */
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* 按钮之间的间距 */
+    }
+
+    .fixed-buttons button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .fixed-buttons button:hover {
+      background-color: #0056b3; /* 悬停效果 */
+    }
+
     /* 手机端适配 */
     @media (max-width: 600px) {
       html {
