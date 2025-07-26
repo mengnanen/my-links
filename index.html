@@ -165,6 +165,14 @@
       background-color: #0056b3; /* 悬停效果 */
     }
 
+    .fixed-buttons .toggle-mode-button {
+      background-color: #28a745; /* 设置按钮颜色 */
+    }
+
+    .fixed-buttons .toggle-mode-button:hover {
+      background-color: #218838;
+    }
+
     /* 手机端适配 */
     @media (max-width: 600px) {
       html {
@@ -522,9 +530,7 @@
   <!-- 固定右侧的按钮区域 -->
   <div class="fixed-buttons">
     <button class="top-button" onclick="scrollToTop()">返回顶部</button>
-    <button class="light-button" onclick="setLightMode()">明亮模式</button>
-    <button class="dark-button" onclick="setDarkMode()">暗黑模式</button>
-    <button class="auto-button" onclick="setAutoMode()">自动模式</button>
+    <button class="toggle-mode-button" onclick="toggleMode()">切换模式</button>
   </div>
 
   <footer>私人专用导航,最终解释权归本人所有,请勿传播</footer>
@@ -535,37 +541,26 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 始终明亮模式
-    function setLightMode() {
-      document.documentElement.setAttribute('data-theme', 'light');
+    // 切换模式：在明亮模式和暗黑模式之间切换
+    function toggleMode() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
     }
 
-    // 始终暗黑模式
-    function setDarkMode() {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
-    // 自动模式：根据系统设置切换
-    function setAutoMode() {
+    // 页面加载时根据系统设置自动切换
+    window.addEventListener('load', () => {
+      // 初始加载时根据系统的主题来决定默认模式
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       if (mediaQuery.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
       }
-
-      // 监听系统主题变化
-      mediaQuery.addEventListener('change', (e) => {
-        if (e.matches) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      });
-    }
-
-    // 页面加载时根据系统设置自动切换
-    window.addEventListener('load', setAutoMode);
+    });
   </script>
 
 </body>
