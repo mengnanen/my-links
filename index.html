@@ -34,11 +34,17 @@
       color: #333;
     }
 
+    /* 分类图标参数 */
     .section-title svg {
       width: 20px;
       height: 20px;
       margin-right: 8px;
       fill: #666;
+    }
+
+    /* 暗黑模式分类图标颜色 */
+    [data-theme='dark'] .section-title svg {
+      fill: #aaa;
     }
 
     .card-grid {
@@ -65,6 +71,12 @@
       margin-bottom: 4px; /* 卡片与下一个卡片之间的垂直距离 */
     }
 
+    /* 暗黑模式卡片背景 */
+    [data-theme='dark'] .card {
+      background: #2a2a2a;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
     /* 鼠标悬停时卡片微微上移 */
     .card:hover {
       transform: translateY(-3px);
@@ -81,6 +93,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* 暗黑模式图标容器背景 */
+    [data-theme='dark'] .card-icon {
+      background-color: rgba(255, 255, 255, 0.08);
     }
 
     .card-icon img {
@@ -113,6 +130,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 130px;
+    }
+
+    /* 暗黑模式描述文字 */
+    [data-theme='dark'] .card-desc {
+      color: #bbb;
     }
 
     /* 整体 footer 区域样式 */
@@ -156,6 +178,11 @@
       width: 26px; /* 图标显示尺寸 */
       height: 26px;
       object-fit: contain; /* 保持原图比例缩放显示 */
+    }
+
+    /* 暗黑模式 footer 图标亮一点 */
+    [data-theme='dark'] .footer-icons img {
+      filter: brightness(2);
     }
 
     /* 版权说明文本样式 */
