@@ -511,5 +511,45 @@
   </div>
 
   <footer>私人专用导航,最终解释权归本人所有,请勿传播</footer>
+
+  <script>
+    // 返回顶部按钮
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 始终明亮模式
+    function setLightMode() {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    // 始终暗黑模式
+    function setDarkMode() {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // 自动模式：根据系统设置切换
+    function setAutoMode() {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mediaQuery.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+
+      // 监听系统主题变化
+      mediaQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      });
+    }
+
+    // 页面加载时根据系统设置自动切换
+    window.addEventListener('load', setAutoMode);
+  </script>
+
 </body>
 </html>
