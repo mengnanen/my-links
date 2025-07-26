@@ -180,6 +180,7 @@
       justify-content: center;
       transition: background-color 0.3s, transform 0.2s;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微卡片阴影 */
+      box-sizing: border-box;
     }
 
     /* 鼠标悬停时图标容器背景略变深 */
@@ -201,7 +202,10 @@
     .icon-container img {
       width: 24px;
       height: 24px;
-      filter: none;
+      object-fit: contain;
+      display: block;
+      margin: 0;
+      vertical-align: middle;
     }
 
     /* 手机端适配 */
