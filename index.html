@@ -115,11 +115,52 @@
       max-width: 130px;
     }
 
+    /* 整体 footer 区域样式 */
     footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.8em;
-      color: #aaa;
+      margin-top: 60px; /* 与上方内容的间距 */
+      padding: 40px 20px 30px; /* 上内边距 40px，左右 20px，下 30px */
+      text-align: center; /* 所有内容居中对齐 */
+      font-size: 0.9em; /* 基础字体大小 */
+      color: #666; /* 默认字体颜色为深灰色 */
+    }
+
+    /* 圆形社交图标的外部容器 */
+    .footer-icons {
+      display: flex; /* 使用 Flex 布局水平排列图标 */
+      justify-content: center; /* 水平居中图标组 */
+      gap: 20px; /* 图标之间的间距 */
+      margin-bottom: 16px; /* 与下方版权信息的垂直间距 */
+    }
+
+    /* 每一个图标按钮的样式 */
+    .footer-icons a {
+      width: 44px; /* 图标容器宽度 */
+      height: 44px; /* 图标容器高度 */
+      background-color: #f2f2f2; /* 默认背景色为浅灰色 */
+      border-radius: 50%; /* 设置为圆形 */
+      display: flex; /* 使用 Flex 居中图标 */
+      align-items: center; /* 垂直居中 */
+      justify-content: center; /* 水平居中 */
+      transition: all 0.3s ease; /* 平滑过渡效果 */
+      text-decoration: none; /* 去除链接下划线 */
+    }
+
+    /* 鼠标悬停时的按钮背景变浅 */
+    .footer-icons a:hover {
+      background-color: #e5e5e5; /* 悬停时变成稍浅的灰色 */
+    }
+
+    /* 图标本体的样式 */
+    .footer-icons img {
+      width: 22px; /* 图标显示尺寸 */
+      height: 22px;
+      object-fit: contain; /* 保持原图比例缩放显示 */
+    }
+
+    /* 版权说明文本样式 */
+    .footer-copy {
+      font-size: 0.85em; /* 比正文略小 */
+      color: #999; /* 更浅灰色，用于低强调信息 */
     }
 
     /* 默认主题样式（明亮模式） */
@@ -565,8 +606,20 @@
       </div>
     </button>
   </div>
+  
+  <footer>
+    <div class="footer-icons">
+      <a href="#"><img src="svg/wechat.svg" alt="WeChat"></a>
+      <a href="#"><img src="svg/qq.svg" alt="QQ"></a>
+      <a href="#"><img src="svg/weibo.svg" alt="Weibo"></a>
+      <a href="https://github.com/mengnanen" target="_blank"><img src="svg/github.svg" alt="GitHub"></a>
+    </div>
 
-  <footer>王小二私人专用导航,最终解释权归本人所有,请勿传播</footer>
+    <div class="footer-copy">
+      Copyright © 2025 wangxiaoer. All rights reserved. Made with Love.
+    </div>
+  </footer>
+
 
   <script>
     // 返回顶部按钮
