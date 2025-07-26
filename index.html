@@ -139,7 +139,7 @@
       color: var(--text-color);
     }
 
-    /* 固定右侧的按钮样式 */
+    /* 固定右侧按钮的容器样式 */
     .fixed-buttons {
       position: fixed;
       top: 50%;
@@ -147,48 +147,61 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 12px; /* 按钮之间的垂直间距 */
     }
 
+    /* 清除按钮默认样式，仅保留图标容器样式 */
     .fixed-buttons button {
-      all: unset; /* 清除所有默认样式 */
+      all: unset; /* 移除默认背景、边框、padding 等 */
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    /* 鼠标悬停时轻微透明，增强反馈感 */
     .fixed-buttons button:hover {
-      opacity: 0.35; /* 悬停时轻微透明过渡 */
+      opacity: 0.75;
     }
 
-    /* 固定按钮的图标样式 */
+    /* 鼠标点击时微缩，提供点击动效 */
+    .fixed-buttons button:active {
+      transform: scale(0.95);
+    }
+
+    /* 图标容器样式：圆角、灰色背景、阴影、居中 */
     .icon-container {
       width: 50px;
       height: 50px;
       border-radius: 14px;
-      background-color: rgba(0, 0, 0, 0.08); /* 默认灰色背景 */
+      background-color: rgba(0, 0, 0, 0.08); /* 明亮模式默认背景 */
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微卡片阴影 */
     }
 
+    /* 鼠标悬停时图标容器背景略变深 */
+    .icon-container:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    /* 暗黑模式下图标容器背景颜色调整 */
     [data-theme='dark'] .icon-container {
-      background-color: rgba(255, 255, 255, 0.08); /* 暗黑模式下的背景 */
+      background-color: rgba(255, 255, 255, 0.08);
     }
 
+    /* 暗黑模式下悬停时图标容器背景变亮 */
+    [data-theme='dark'] .icon-container:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* 图标样式：固定尺寸，无滤镜（保持原色） */
     .icon-container img {
       width: 24px;
       height: 24px;
-      filter: none; /* 去掉图标的 filter，避免颜色变化 */
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.8em;
-      color: #aaa;
+      filter: none;
     }
 
     /* 手机端适配 */
