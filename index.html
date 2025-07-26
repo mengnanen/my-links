@@ -151,26 +151,15 @@
     }
 
     .fixed-buttons button {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 14px;
+      all: unset; /* 清除所有默认样式 */
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .fixed-buttons button:hover {
-      background-color: #0056b3;
-    }
-
-    .fixed-buttons .toggle-mode-button {
-      background-color: #28a745;
-    }
-
-    .fixed-buttons .toggle-mode-button:hover {
-      background-color: #218838;
+      opacity: 0.8; /* 悬停时轻微透明过渡 */
     }
 
     /* 固定按钮的图标样式 */
