@@ -301,11 +301,11 @@
 
     /* 加密类别锁的图标 */
     .lock-icon {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       margin-left: 6px;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.8;
       transition: opacity 0.2s ease;
       vertical-align: middle;
     }
@@ -951,8 +951,8 @@
       <div class="modal-title">🔒 输入密码访问该分类</div>
       <input type="password" id="category-password" placeholder="请输入密码">
       <div class="modal-actions">
-        <button onclick="submitPassword()">确认</button>
         <button onclick="hideModal()">取消</button>
+        <button onclick="submitPassword()">确认</button>
       </div>
     </div>
   </div>
@@ -998,9 +998,9 @@
       if (input === "808206") {
         document.getElementById("locked-category").style.display = "block";
         hideModal();
-        alert("✅ 解锁成功！");
+        alert("✅ 解锁成功！可以观看啦！");
       } else {
-        alert("❌ 密码错误！");
+        alert("❌ 密码错误！请重新输入！");
       }
     }
 
