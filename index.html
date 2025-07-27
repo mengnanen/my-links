@@ -154,7 +154,7 @@
       margin-bottom: 16px; /* 与下方版权信息的垂直间距 */
     }
 
-    /* 每一个图标按钮的样式 */
+    /* 每一个圆形社交按钮的容器样式 */
     .footer-icons a {
       width: 40px; /* 图标容器宽度 */
       height: 40px; /* 图标容器高度 */
@@ -167,6 +167,12 @@
       transition: all 0.3s ease; /* 平滑过渡效果 */
       text-decoration: none; /* 去除链接下划线 */
     }
+
+    /* 暗黑模式下的圆形社交按钮颜色 */
+    [data-theme='dark'] .footer-icons a {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
 
     /* 鼠标悬停时的按钮背景变浅 */
     .footer-icons a:hover {
