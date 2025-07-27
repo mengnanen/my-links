@@ -13,6 +13,7 @@
       padding: 30px 20px;
     }
 
+    /* 网站主标题参数 */
     h1 {
       text-align: center;
       font-size: 2.4em;
@@ -21,10 +22,16 @@
       color: #222;
     }
 
+    /* 暗黑模式下网站主标题参数 */
+    [data-theme='dark'] h1 {
+      color: #eee; /* 更亮的白色字体 */
+    }
+
     .section {
       margin-bottom: 25px;/* 分类整体模块与下一个模块之间的间距 */
     }
 
+    /* 分类标题参数 */
     .section-title {
       display: flex;
       align-items: center;
@@ -32,6 +39,11 @@
       font-weight: bold;
       margin-bottom: 15px;/* 分类标题与卡片之间的间距 */
       color: #333;
+    }
+
+    /* 暗黑模式下分类标题参数 */
+    [data-theme='dark'] .section-title {
+      color: #ddd; /* 提升分类标题颜色 */
     }
 
     /* 分类图标参数 */
@@ -90,6 +102,7 @@
       flex-shrink: 0;
       border-radius: 50%;
       background-color: #f2f2f2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 左侧图标容器明亮模式添加轻微阴影 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -160,7 +173,7 @@
       width: 40px; /* 图标容器宽度 */
       height: 40px; /* 图标容器高度 */
       background-color: #ffffff; /* 默认背景色为浅灰色 */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 圆形社交按钮容器明亮模式添加轻微阴影 */
       border-radius: 50%; /* 设置为圆形 */
       display: flex; /* 使用 Flex 居中图标 */
       align-items: center; /* 垂直居中 */
