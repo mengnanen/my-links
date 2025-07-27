@@ -301,8 +301,8 @@
 
     /* 加密类别锁的图标 */
     .lock-icon {
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
       margin-left: 6px;
       cursor: pointer;
       opacity: 0.7;
@@ -316,82 +316,99 @@
 
     /* 加密弹窗遮罩层 */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+        justify-content: center; /* 水平居中 */
+        align-items: center;     /* 垂直居中 */
     }
 
     /* 加密弹窗盒子 */
     .modal-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 300px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      text-align: center;
+        background: #fff;
+        padding: 24px 20px 16px;
+        border-radius: 12px;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        box-sizing: border-box;
     }
 
     /* 加密弹窗暗黑模式适配 */
     @media (prefers-color-scheme: dark) {
-      .modal-box {
-        background: #1e1e1e;
-        color: #fff;
-      }
+        .modal-box {
+            background: #1e1e1e;  /* 背景色 */
+            color: #fff;           /* 文字颜色 */
+        }
 
-      .modal-box input {
-        background: #333;
-        color: #fff;
-        border: 1px solid #555;
-      }
+        .modal-box input {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
 
-      .modal-box button {
-        background-color: #444;
-        color: #fff;
-      }
+        .modal-box button {
+            background-color: #444;
+            color: #fff;
+        }
 
-      .modal-box button:hover {
-        background-color: #666;
-      }
+        .modal-box button:hover {
+            background-color: #666;
+        }
     }
 
     .modal-title {
-      font-size: 1em;
-      margin-bottom: 12px;
+        font-size: 1.2em; /* 设置标题字体大小 */
+        margin-bottom: 14px;
+        font-weight: 500;
     }
 
+    /* 输入框样式 */
     .modal-box input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 12px;
-      font-size: 1em;
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 16px;
+        font-size: 1em;
+        outline: none;
+        box-sizing: border-box;
     }
 
+    /* 底部按钮区域 */
     .modal-actions {
-      display: flex;
-      justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
     }
 
     .modal-actions button {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      flex: 1;
-      margin: 0 4px;
-      transition: background-color 0.2s ease;
+        flex: 1;
+        padding: 12px 0;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        transition: background-color 0.2s ease;
     }
 
     .modal-actions button:hover {
-      background-color: #0056b3;
+        background-color: #0056b3;
+    }
+
+    /* 取消按钮特殊样式（放左侧） */
+    .modal-actions button:last-child {
+        background-color: #ccc;
+        color: #333;
+    }
+
+    .modal-actions button:last-child:hover {
+        background-color: #aaa;
     }
     
     /* 手机端适配 */
