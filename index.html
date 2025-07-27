@@ -386,29 +386,33 @@
     }
 
     .modal-actions button {
-        flex: 1;
-        padding: 12px 0;
-        border: none;
-        border-radius: 8px;
-        font-size: 15px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-        transition: background-color 0.2s ease;
+     flex: 1;
+      padding: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
-    .modal-actions button:hover {
-        background-color: #0056b3;
+    /* 第一个按钮：取消（灰色） */
+    .modal-actions button:first-child {
+      background-color: #ccc;
+      color: #333;
     }
 
-    /* 取消按钮特殊样式（放左侧） */
+    .modal-actions button:first-child:hover {
+      background-color: #aaa;
+    }
+
+    /* 第二个按钮：确认（蓝色） */
     .modal-actions button:last-child {
-        background-color: #ccc;
-        color: #333;
+      background-color: #007bff;
+      color: white;
     }
 
     .modal-actions button:last-child:hover {
-        background-color: #aaa;
+      background-color: #0056b3;
     }
     
     /* 手机端适配 */
