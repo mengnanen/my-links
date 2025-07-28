@@ -438,7 +438,7 @@
   <!-- 常用工具分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       常用工具
     </div>
 
@@ -498,7 +498,7 @@
   <!-- 实用网站分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       实用网站
     </div>
 
@@ -578,7 +578,7 @@
   <!-- 影视网站分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       影视网站
     </div>
 
@@ -639,7 +639,7 @@
   <!-- 论坛资源分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       论坛资源
     </div>
 
@@ -669,7 +669,7 @@
   <!-- 服务器站分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       服务器站
     </div>
 
@@ -719,7 +719,7 @@
   <!-- 美化网站分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       美化网站
     </div>
 
@@ -779,7 +779,7 @@
   <!-- 开源项目分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       开源项目
     </div>
 
@@ -899,10 +899,10 @@
   <!-- 加密内容分类 -->
   <div class="section">
     <div class="section-title">
-      <img src="svg/1.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       加密内容
       <!-- 加锁按钮 -->
-      <img src="svg/suo.svg" class="lock-icon" onclick="unlockCategory()" alt="加锁" />
+      <img src="svg/jiami.svg" class="lock-icon" onclick="unlockCategory()" alt="加锁" />
     </div>
 
     <!-- 加锁内容区域（默认隐藏） -->
@@ -936,14 +936,14 @@
     <!-- 返回顶部按钮 -->
     <button class="top-button" onclick="scrollToTop()">
       <div class="icon-container">
-        <img src="svg/6.svg" alt="返回顶部" width="24" height="24" />
+        <img src="svg/dingduan.svg" alt="返回顶部" width="24" height="24" />
       </div>
     </button>
 
     <!-- 切换模式按钮 -->
     <button class="toggle-mode-button" onclick="toggleMode()">
       <div class="icon-container">
-        <img id="themeIcon" src="svg/7.svg" alt="切换模式">
+        <img id="themeIcon" src="svg/mingliang.svg" alt="切换模式">
       </div>
     </button>
   </div>
@@ -982,10 +982,10 @@
       const currentTheme = document.documentElement.getAttribute('data-theme');
       if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('themeIcon').src = 'svg/7.svg'; // 切换为太阳图标
+        document.getElementById('themeIcon').src = 'svg/mingliang.svg'; // 切换为太阳图标
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('themeIcon').src = 'svg/8.svg'; // 切换为月亮图标
+        document.getElementById('themeIcon').src = 'svg/anhei.svg'; // 切换为月亮图标
       }
     }
 
@@ -994,10 +994,10 @@
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       if (mediaQuery.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('themeIcon').src = 'svg/8.svg'; // 默认月亮图标
+        document.getElementById('themeIcon').src = 'svg/anhei.svg'; // 默认月亮图标
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('themeIcon').src = 'svg/7.svg'; // 默认太阳图标
+        document.getElementById('themeIcon').src = 'svg/mingliang.svg'; // 默认太阳图标
       }
     });
 
@@ -1012,7 +1012,7 @@
       if (input === "808206") {
         document.getElementById("locked-category").style.display = "block";
         hideModal();
-        alert("✅ 解锁成功！内容已加载！");
+        alert("✅ 解锁成功！内容已显示！");
       } else {
         alert("❌ 密码错误！请重新输入！");
       }
