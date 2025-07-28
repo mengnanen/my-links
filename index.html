@@ -435,6 +435,24 @@
   <!-- 页面主标题 -->
   <h1>私人网站导航</h1>
 
+  <!-- 分类标签 -->
+  <div class="category-tabs">
+    <button class="tab active" data-category="all">综合</button>
+    <button class="tab" data-category="common">常用</button>
+    <button class="tab" data-category="tool">实用</button>
+    <button class="tab" data-category="movie">影视</button>
+    <button class="tab" data-category="forum">论坛</button>
+    <button class="tab" data-category="server">服务器</button>
+    <button class="tab" data-category="ui">美化</button>
+    <button class="tab" data-category="opensource">开源</button>
+    <button class="tab" data-category="secure">加密</button>
+  </div>
+
+  <!-- 搜索框 -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="🔍 搜索你感兴趣的网站..." oninput="filterCards()">
+  </div>
+
   <!-- 常用工具分类 -->
   <div class="section">
     <div class="section-title">
