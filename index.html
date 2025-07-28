@@ -912,7 +912,7 @@
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       加密内容
       <!-- 加锁按钮 -->
-      <img src="svg/jiami.svg" class="lock-icon" onclick="unlockCategory()" alt="加锁" />
+      <img src="svg/jiami.svg" id="lock-icon" class="lock-icon" onclick="toggleLock()" alt="加锁" data-state="locked" />
     </div>
 
     <!-- 加锁内容区域（默认隐藏） -->
@@ -1011,34 +1011,49 @@
       }
     });
 
-    // 显示弹窗
-    function unlockCategory() {
-      document.getElementById("password-modal").style.display = "flex";
+    // 切换锁状态
+    function toggleLock() {
+        const icon = document.getElementById("lock-icon");
+        const state = icon.getAttribute("data-state");
+
+        if (state === "locked") {
+            // 如果当前是锁状态，弹出输入框
+            document.getElementById("password-modal").style.display = "flex";
+        } else {
+            // 当前已解锁，再点击即上锁
+            icon.setAttribute("src", "svg/jiami.svg");  // 换回锁图
+            icon.setAttribute("data-state", "locked");
+            document.getElementById("locked-category").style.display = "none";
+        }
     }
 
-    // 提交密码
+    // 确认密码
     function submitPassword() {
-      const input = document.getElementById("category-password").value;
-      if (input === "808206") {
-        document.getElementById("locked-category").style.display = "block";
-        hideModal();
-        alert("✅ 解锁成功！内容已显示！");
-      } else {
-        alert("❌ 密码错误！请重新输入！");
-      }
-    }
+        const input = document.getElementById("category-password").value;
+        const icon = document.getElementById("lock-icon");
 
+        if (input === "808206") {
+            document.getElementById("locked-category").style.display = "block";
+            icon.setAttribute("src", "svg/jiemi.svg");   // 换成解锁图标
+            icon.setAttribute("data-state", "unlocked");
+            hideModal();
+            alert("✅ 你小子居然知道密码！");
+        } else {
+            alert("❌ 请不要有动歪心思哦！");
+        }
+    }
+    
     // 隐藏弹窗
     function hideModal() {
-      document.getElementById("password-modal").style.display = "none";
-      document.getElementById("category-password").value = "";
+        document.getElementById("password-modal").style.display = "none";
+        document.getElementById("category-password").value = "";
     }
 
-    // 点击遮罩层关闭（排除点击弹窗本身）
+    // 点击遮罩层关闭弹窗
     function closeModal(e) {
-      if (e.target.id === "password-modal") {
-        hideModal();
-      }
+        if (e.target.id === "password-modal") {
+            hideModal();
+        }
     }
   </script>
 
