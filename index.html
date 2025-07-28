@@ -27,6 +27,51 @@
       color: #eee; /* 更亮的白色字体 */
     }
 
+    /* 分类标签容器整体样式 */
+    .category-tabs {
+        display: flex;              /* 水平排列 */
+        flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
+        overflow-x: auto;           /* 横向滚动条 */
+        padding: 10px 0;            /* 上下内边距 */
+        gap: 8px;                   /* 按钮之间的间距 */
+        margin-bottom: 10px;        /* 与搜索框的间距 */
+    }
+
+    /* 每个分类按钮样式 */
+    .category-tabs .tab {
+        flex-shrink: 0;             /* 防止按钮被压缩 */
+        padding: 6px 12px;          /* 内边距：上下6px，左右12px */
+        border-radius: 8px;         /* 圆角 */
+        border: none;               /* 去掉边框 */
+        background-color: #f0f0f0;  /* 默认背景颜色 */
+        color: #333;                /* 文字颜色 */
+        font-size: 14px;            /* 字体大小 */
+        cursor: pointer;            /* 鼠标悬停时显示为可点击 */
+        transition: background-color 0.2s ease; /* 背景色平滑过渡 */
+    }
+
+    /* 被激活（选中）的标签按钮样式 */
+    .category-tabs .tab.active {
+        background-color: #007bff;  /* 选中时的背景色（蓝色） */
+        color: #fff;                /* 选中时的文字颜色（白色） */
+    }
+
+    /* 搜索框外层容器 */
+    .search-bar {
+        margin-bottom: 20px;        /* 与下方内容的间距 */
+    }
+
+    /* 搜索框输入框样式 */
+    .search-bar input {
+        width: 100%;                /* 宽度铺满父容器 */
+        padding: 10px 14px;         /* 内边距：上下10px，左右14px */
+        font-size: 15px;            /* 字体大小 */
+        border: 1px solid #ccc;     /* 边框颜色 */
+        border-radius: 8px;         /* 圆角 */
+        outline: none;              /* 聚焦时不显示外轮廓线 */
+        box-sizing: border-box;     /* 包含内边距和边框 */
+    }
+
     .section {
       margin-bottom: 25px;/* 分类整体模块与下一个模块之间的间距 */
     }
