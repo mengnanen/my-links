@@ -27,7 +27,7 @@
       color: #eee; /* 更亮的白色字体 */
     }
 
-    /* 分类标签容器整体样式 */
+    /* 分类标签按钮容器整体样式 */
     .category-tabs {
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
@@ -41,7 +41,7 @@
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
         padding: 6px 12px;          /* 内边距：上下6px，左右12px */
-        border-radius: 8px;         /* 圆角 */
+        border-radius: 10px;         /* 圆角 */
         border: none;               /* 去掉边框 */
         background-color: #ffffff;  /* 默认背景颜色 */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
@@ -74,8 +74,37 @@
         box-sizing: border-box;     /* 包含内边距和边框 */
     }
 
+    /* 标签按钮和搜索框暗黑模式 */
+    @media (prefers-color-scheme: dark) {
+    
+        /* 分类标签按钮（暗黑背景 + 高对比度文字） */
+        .category-tabs .tab {
+            background-color: #2a2a2a; /* 暗背景 */
+            color: #eee;               /* 浅文字颜色 */
+        }
+
+        /* 激活的标签按钮（暗黑下更亮的蓝色） */
+        .category-tabs .tab.active {
+            background-color: #3399ff;
+            color: #fff;
+        }
+
+        /* 搜索框容器不变，只需调整内部 input */
+        .search-bar input {
+            background-color: #1f1f1f;   /* 深背景 */
+            color: #eee;                 /* 浅文字颜色 */
+            border: 1px solid #444;      /* 暗边框 */
+        }
+
+        /* 输入框 placeholder 文字颜色适配 */
+        .search-bar input::placeholder {
+            color: #888;
+        }
+    }
+
+    /* 分类整体模块与下一个模块之间的间距 */
     .section {
-      margin-bottom: 25px;/* 分类整体模块与下一个模块之间的间距 */
+      margin-bottom: 25px;
     }
 
     /* 分类标题参数 */
