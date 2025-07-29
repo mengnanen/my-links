@@ -47,7 +47,7 @@
         border-radius: 10px;         /* 圆角 */
         border: none;               /* 去掉边框 */
         background-color: #ffffff;  /* 默认背景颜色 */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
         color: #333;                /* 文字颜色 */
         font-size: 14px;            /* 字体大小 */
         cursor: pointer;            /* 鼠标悬停时显示为可点击 */
@@ -58,18 +58,21 @@
     [data-theme='dark'] .category-tabs .tab {
       background-color: #2a2a2a;
       color: #eee;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     /* 被激活（选中）的标签按钮样式 */
     .category-tabs .tab.active {
         background-color: #007bff;  /* 选中时的背景色（蓝色） */
         color: #fff;                /* 选中时的文字颜色（白色） */
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     /* 暗黑模式下被激活（选中）的标签按钮 */
     [data-theme='dark'] .category-tabs .tab.active {
       background-color: #3399ff;
       color: #fff;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     /* 滚动条整体容器 */
@@ -183,7 +186,7 @@
       align-items: center; /* 垂直方向居中对齐图标和文字 */
       background: #ffffff; /* 背景颜色为纯白 */
       border-radius: 14px; /* 设置圆角边框，提升视觉美观 */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
       text-decoration: none; /* 移除链接下划线 */
       color: inherit;  /* 文字颜色继承外部设置，保持一致性 */
       padding: 5px 12px 5px 14px; /* 内边距：上右下左，左边多一点让图标靠近左侧边缘 */
@@ -196,7 +199,7 @@
     /* 暗黑模式卡片背景 */
     [data-theme='dark'] .card {
       background: #2a2a2a;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     /* 鼠标悬停时卡片微微上移 */
@@ -212,7 +215,7 @@
       flex-shrink: 0;
       border-radius: 50%;
       background-color: #f2f2f2;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 左侧图标容器明亮模式添加轻微阴影 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -221,7 +224,7 @@
     /* 暗黑模式图标容器背景 */
     [data-theme='dark'] .card-icon {
       background-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     .card-icon img {
@@ -283,7 +286,7 @@
       width: 40px; /* 图标容器宽度 */
       height: 40px; /* 图标容器高度 */
       background-color: #ffffff; /* 默认背景色为浅灰色 */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 圆形社交按钮容器明亮模式添加轻微阴影 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
       border-radius: 50%; /* 设置为圆形 */
       display: flex; /* 使用 Flex 居中图标 */
       align-items: center; /* 垂直居中 */
@@ -295,7 +298,7 @@
     /* 暗黑模式下的圆形社交按钮颜色 */
     [data-theme='dark'] .footer-icons a {
       background-color: #2a2a2a;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
 
@@ -392,6 +395,7 @@
     /* 暗黑模式下图标容器背景颜色调整 */
     [data-theme='dark'] .icon-container {
       background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
 
     /* 暗黑模式下悬停时图标容器背景变亮 */
