@@ -82,8 +82,10 @@
 
     /* 滚动条滑块 */
     .category-tabs::-webkit-scrollbar-thumb {
-        background-color: #ccc; /* 滑块颜色（浅灰） */
+        background: rgba(0, 0, 0, 0.3); /* 滑块颜色（浅灰） */
         border-radius: 6px;
+        width: 40px;  /* 无效，横向需控制“最小宽度” */
+        min-width: 40px;  /* 设置滑块的最小长度 */
     }
 
     /* 鼠标悬停时滑块颜色变化 */
@@ -92,8 +94,8 @@
     }
 
     /* 暗黑模式滚动条滑块 */
-    [data-theme="dark"] .category-tabs::-webkit-scrollbar-thumb {
-        background-color: #555;
+    [data-theme='dark'] .category-tabs::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
     }
 
     /* 暗黑模式鼠标悬停时滑块颜色变化 */
