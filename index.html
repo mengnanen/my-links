@@ -483,14 +483,14 @@
   <!-- 分类标签 -->
   <div class="category-tabs">
     <button class="tab active" data-category="all">综合</button>
-    <button class="tab" data-category="common">常用</button>
-    <button class="tab" data-category="tool">实用</button>
-    <button class="tab" data-category="movie">影视</button>
-    <button class="tab" data-category="forum">论坛</button>
-    <button class="tab" data-category="server">服务器</button>
-    <button class="tab" data-category="ui">美化</button>
-    <button class="tab" data-category="opensource">开源</button>
-    <button class="tab" data-category="secure">加密</button>
+    <button class="tab" data-category="常用">常用</button>
+    <button class="tab" data-category="实用">实用</button>
+    <button class="tab" data-category="影视">影视</button>
+    <button class="tab" data-category="论坛">论坛</button>
+    <button class="tab" data-category="服务器">服务器</button>
+    <button class="tab" data-category="美化">美化</button>
+    <button class="tab" data-category="开源">开源</button>
+    <button class="tab" data-category="加密">加密</button>
   </div>
 
   <!-- 搜索框 -->
@@ -499,7 +499,7 @@
   </div>
 
   <!-- 常用工具分类 -->
-  <div class="section">
+  <div class="section" data-category="常用">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       常用工具
@@ -559,7 +559,7 @@
   </div>
 
   <!-- 实用网站分类 -->
-  <div class="section">
+  <div class="section" data-category="实用">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       实用网站
@@ -639,7 +639,7 @@
   </div>
 
   <!-- 影视网站分类 -->
-  <div class="section">
+  <div class="section" data-category="影视">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       影视网站
@@ -700,7 +700,7 @@
   </div>
 
   <!-- 论坛资源分类 -->
-  <div class="section">
+  <div class="section" data-category="论坛">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       论坛资源
@@ -730,7 +730,7 @@
   </div>
 
   <!-- 服务器站分类 -->
-  <div class="section">
+  <div class="section" data-category="服务器">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       服务器站
@@ -780,7 +780,7 @@
   </div>
 
   <!-- 美化网站分类 -->
-  <div class="section">
+  <div class="section" data-category="美化">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       美化网站
@@ -840,7 +840,7 @@
   </div>
 
   <!-- 开源项目分类 -->
-  <div class="section">
+  <div class="section" data-category="开源">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       开源项目
@@ -970,7 +970,7 @@
   </div>
 
   <!-- 加密内容分类 -->
-  <div class="section">
+  <div class="section" data-category="加密">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       加密内容
@@ -1045,6 +1045,49 @@
   </div>
 
   <script>
+    // 当前激活分类，默认为 "all"
+    let currentCategory = "all";
+
+    // 给所有标签按钮绑定点击事件
+    document.querySelectorAll(".tab").forEach(button => {
+        button.addEventListener("click", () => {
+            // 清除所有标签的激活样式
+            document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+
+            // 当前点击的标签添加激活样式
+            button.classList.add("active");
+
+            // 记录当前激活的分类
+            currentCategory = button.dataset.category;
+
+            // 执行过滤逻辑
+            filterSections();
+        });
+    });
+
+    // 搜索框输入监听，输入内容时也触发过滤
+    document.getElementById("search-input").addEventListener("input", filterSections);
+
+    // 分类和关键词过滤函数
+    function filterSections() {
+        // 获取搜索关键词，转小写去空格
+        const keyword = document.getElementById("search-input").value.trim().toLowerCase();
+
+        // 获取所有分类模块
+        const sections = document.querySelectorAll(".section");
+
+        // 遍历每个模块，判断是否显示
+        sections.forEach(section => {
+            const sectionCategory = section.dataset.category || "all"; // 每个模块应设置 data-category
+            const matchCategory = (currentCategory === "all" || sectionCategory === currentCategory); // 判断是否属于当前分类
+            const text = section.innerText.toLowerCase(); // 获取整个模块文字内容
+            const matchKeyword = text.includes(keyword); // 判断是否包含搜索词
+
+            // 同时满足分类和关键词匹配才显示
+            section.style.display = (matchCategory && matchKeyword) ? "block" : "none";
+        });
+    }
+    
     // 返回顶部按钮
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
