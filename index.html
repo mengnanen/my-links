@@ -32,7 +32,7 @@
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
         overflow-x: auto;           /* 横向滚动条 */
-        max-width: 90%;             /* 控制滚动条宽度，例如90%屏幕宽度 */
+        max-width: 100%;            /* 标签容器宽度，例如100%屏幕宽度 */
         padding: 10px 0;            /* 上下内边距 */
         gap: 8px;                   /* 按钮之间的间距 */
         margin: 0 auto 10px;        /* 居中显示 + 与下方间距 */
@@ -84,6 +84,7 @@
     .category-tabs::-webkit-scrollbar-thumb {
         background-color: #ccc; /* 滑块颜色（浅灰） */
         border-radius: 6px;
+        max-width: 30%; /* 滚动条宽度，例如30%屏幕宽度 */
     }
 
     /* 鼠标悬停时滑块颜色变化 */
