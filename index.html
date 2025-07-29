@@ -27,7 +27,7 @@
       color: #eee; /* 更亮的白色字体 */
     }
 
-    /* 分类标签按钮容器整体样式 */
+    /* 标签按钮容器整体样式 */
     .category-tabs {
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
@@ -37,7 +37,7 @@
         margin-bottom: 10px;        /* 与搜索框的间距 */
     }
 
-    /* 每个分类按钮样式 */
+    /* 每个标签按钮样式 */
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
         padding: 6px 12px;          /* 内边距：上下6px，左右12px */
@@ -51,10 +51,22 @@
         transition: background-color 0.2s ease; /* 背景色平滑过渡 */
     }
 
+    /* 暗黑模式下的未激活标签按钮 */
+    [data-theme='dark'] .category-tabs .tab {
+      background-color: #2a2a2a;
+      color: #eee;
+    }
+
     /* 被激活（选中）的标签按钮样式 */
     .category-tabs .tab.active {
         background-color: #007bff;  /* 选中时的背景色（蓝色） */
         color: #fff;                /* 选中时的文字颜色（白色） */
+    }
+
+    /* 暗黑模式下被激活（选中）的标签按钮 */
+    [data-theme='dark'] .category-tabs .tab.active {
+      background-color: #3399ff;
+      color: #fff;
     }
 
     /* 搜索框外层容器 */
@@ -74,32 +86,16 @@
         box-sizing: border-box;     /* 包含内边距和边框 */
     }
 
-    /* 标签按钮和搜索框暗黑模式 */
-    @media (prefers-color-scheme: dark) {
-    
-        /* 分类标签按钮（暗黑背景 + 高对比度文字） */
-        .category-tabs .tab {
-            background-color: #2a2a2a; /* 暗背景 */
-            color: #eee;               /* 浅文字颜色 */
-        }
+    /* 暗黑模式下的搜索框输入框 */
+    [data-theme='dark'] .search-bar input {
+      background-color: #1f1f1f;
+      color: #eee;
+      border: 1px solid #444;
+    }
 
-        /* 激活的标签按钮（暗黑下更亮的蓝色） */
-        .category-tabs .tab.active {
-            background-color: #3399ff;
-            color: #fff;
-        }
-
-        /* 搜索框容器不变，只需调整内部 input */
-        .search-bar input {
-            background-color: #1f1f1f;   /* 深背景 */
-            color: #eee;                 /* 浅文字颜色 */
-            border: 1px solid #444;      /* 暗边框 */
-        }
-
-        /* 输入框 placeholder 文字颜色适配 */
-        .search-bar input::placeholder {
-            color: #888;
-        }
+    /* 暗黑模式下搜索框提示文字 */
+    [data-theme='dark'] .search-bar input::placeholder {
+      color: #888;
     }
 
     /* 分类整体模块与下一个模块之间的间距 */
@@ -414,32 +410,28 @@
     }
 
     /* 加密弹窗暗黑模式适配 */
-    @media (prefers-color-scheme: dark) {
-        .modal-box {
-            background: #1e1e1e;  /* 背景色 */
-            color: #fff;           /* 文字颜色 */
-        }
-
-        .modal-box input {
-            background: #333;
-            color: #fff;
-            border: 1px solid #555;
-        }
-
-        .modal-box button {
-            background-color: #444;
-            color: #fff;
-        }
-
-        .modal-box button:hover {
-            background-color: #666;
-        }
+    /* 加密弹窗盒子暗黑模式 */
+    [data-theme='dark'] .modal-box {
+        background: #1e1e1e;     /* 背景色：深灰色 */
+        color: #fff;             /* 文字颜色：白色 */
     }
 
-    .modal-title {
-        font-size: 1.2em; /* 设置标题字体大小 */
-        margin-bottom: 14px;
-        font-weight: 500;
+    /* 输入框暗黑模式 */
+    [data-theme='dark'] .modal-box input {
+        background: #333;        /* 背景色：更深的灰 */
+        color: #fff;             /* 输入文字颜色：白色 */
+        border: 1px solid #555;  /* 边框颜色：中灰 */
+    }
+
+    /* 按钮暗黑模式未点击状态 */
+    [data-theme='dark'] .modal-box button {
+        background-color: #444;  /* 背景：深灰 */
+        color: #fff;             /* 文字：白色 */
+    }
+
+    /* 按钮暗黑模式悬停状态 */
+    [data-theme='dark'] .modal-box button:hover {
+        background-color: #666;  /* 悬停时背景：更浅的灰 */
     }
 
     /* 输入框样式 */
