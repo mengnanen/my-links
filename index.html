@@ -163,22 +163,6 @@
       border-radius: 2px;
       transition: transform 0.3s ease;
     }
-
-    /* 横向滚动容器 */
-    .section-wrapper {
-      display: flex;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* 每页内容区域 */
-    .section {
-      scroll-snap-align: start;
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      padding: 10px;
-    }
     
     /* 分类整体模块与下一个模块之间的间距 */
     .section {
@@ -609,542 +593,560 @@
     </div>
   </div>
 
-  <!-- 常用工具分类 -->
-  <div class="section" data-category="常用" data-index="1">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      常用工具
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://chatgpt.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/chatgpt.png" alt="ChatGPT">
-        </div>
-        <div class="card-info">
-          <div class="card-title">ChatGPT</div>
-          <div class="card-desc">国外AI智能助手</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://chat.deepseek.com" target="_blank">
-        <div class="card-icon">
-          <img src="https://chat.deepseek.com/favicon.ico" onerror="this.src='img/deepseek.png'" alt="DeepSeek">
-        </div>
-        <div class="card-info">
-          <div class="card-title">DeepSeek</div>
-          <div class="card-desc">国内AI智能助手</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.doubao.com" target="_blank">
-        <div class="card-icon">
-          <img src="https://www.doubao.com/favicon.ico" onerror="this.src='img/doubao.png'" alt="豆包">
-        </div>
-        <div class="card-info">
-          <div class="card-title">豆包</div>
-          <div class="card-desc">字节跳动旗下AI助手</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://gemini.google.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/gemini.png" alt="Gemini">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Gemini</div>
-          <div class="card-desc">Google旗下AI助手</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="Github">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Github</div>
-          <div class="card-desc">开源项目社区</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- 实用网站分类 -->
-  <div class="section" data-category="实用" data-index="2">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      实用网站
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://github.com/opa334/TrollStore" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt=TrollStore">
-        </div>
-        <div class="card-info">
-          <div class="card-title">TrollStore</div>
-          <div class="card-desc">ios免签名安装软件</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://ids.hongqu.site" target="_blank">
-        <div class="card-icon">
-          <img src="img/shadowrocket.png" alt="红渠">
-        </div>
-        <div class="card-info">
-          <div class="card-title">红渠</div>
-          <div class="card-desc">最新共享小火煎账号</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://whatshub.top" target="_blank">
-        <div class="card-icon">
-          <img src="img/vpn.png" alt=Yfamily">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Yfamily</div>
-          <div class="card-desc">各种代理工具相关配置</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://sspai.com/page/playbook/zh-CN" target="_blank">
-        <div class="card-icon">
-          <img src="img/shortcuts1.png" alt=少数派">
-        </div>
-        <div class="card-info">
-          <div class="card-title">少数派</div>
-          <div class="card-desc">快捷指令仓库</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.kejicut.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/shortcuts2.png" alt=柯基捷径库">
-        </div>
-        <div class="card-info">
-          <div class="card-title">柯基捷径库</div>
-          <div class="card-desc">ios快捷指令中心</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.seemac.cn" target="_blank">
-        <div class="card-icon">
-          <img src="img/mac.png" alt=SeeMac">
-        </div>
-        <div class="card-info">
-          <div class="card-title">SeeMac</div>
-          <div class="card-desc">Mac软件游戏资源站</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://geekuninstaller.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/clear.png" alt=GeekUninstaller">
-        </div>
-        <div class="card-info">
-          <div class="card-title">GeekUninstaller</div>
-          <div class="card-desc">Win强制卸载软件</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.gequhai.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/xx.png" alt=歌曲海">
-        </div>
-        <div class="card-info">
-          <div class="card-title">歌曲海</div>
-          <div class="card-desc">高品质mp3下载</div>
-        </div>
-      </a>
-      
-    </div>
-  </div>
-
-  <!-- 影视网站分类 -->
-  <div class="section" data-category="影视" data-index="3">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      影视网站
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="http://www.饭太硬.net" target="_blank">
-        <div class="card-icon">
-          <img src="img/tvos.png" alt="饭太硬">
-        </div>
-        <div class="card-info">
-          <div class="card-title">饭太硬</div>
-          <div class="card-desc">TV端影视资源导航</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.djzyw.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/duanju.png" alt=短剧资源网">
-        </div>
-        <div class="card-info">
-          <div class="card-title">短剧资源网</div>
-          <div class="card-desc">最新狗血短剧资源</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://moontv.vime50.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/xx.png" alt=moontv">
-        </div>
-        <div class="card-info">
-          <div class="card-title">moontv</div>
-          <div class="card-desc">观影采集站</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://panku.app" target="_blank">
-        <div class="card-icon">
-          <img src="img/xx.png" alt=盘库吧">
-        </div>
-        <div class="card-info">
-          <div class="card-title">盘库吧</div>
-          <div class="card-desc">全网网盘资源在线搜索</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.916dm.fans" target="_blank">
-        <div class="card-icon">
-          <img src="img/xx.png" alt=樱花动漫">
-        </div>
-        <div class="card-info">
-          <div class="card-title">樱花动漫</div>
-          <div class="card-desc">动漫/电视剧/综艺网站</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.jumomo.fun" target="_blank">
-        <div class="card-icon">
-          <img src="img/xx.png" alt=剧馍馍">
-        </div>
-        <div class="card-info">
-          <div class="card-title">剧馍馍</div>
-          <div class="card-desc">电影/动漫/电视剧/综艺</div>
-        </div>
-      </a>
-      
-    </div>
-  </div>
-
-  <!-- 论坛资源分类 -->
-  <div class="section" data-category="论坛" data-index="4">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      论坛资源
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://xd.x6d.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/luntan.png" alt="小刀娱乐网">
-        </div>
-        <div class="card-info">
-          <div class="card-title">小刀娱乐网</div>
-          <div class="card-desc">活动/软件/教程资源分享</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://edu.52it.de" target="_blank">
-        <div class="card-icon">
-          <img src="img/edu.png" alt=学生免费资源">
-        </div>
-        <div class="card-info">
-          <div class="card-title">学生免费资源</div>
-          <div class="card-desc">教育邮箱优惠资源分享</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- 美化网站分类 -->
-  <div class="section" data-category="美化" data-index="5">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      美化网站
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://yukonga.github.io/HQ-ICON/" target="_blank">
-        <div class="card-icon">
-          <img src="img/appstore.png" alt="HQ-Icon">
-        </div>
-        <div class="card-info">
-          <div class="card-title">HQ-Icon</div>
-          <div class="card-desc">获取appstore应用图标</div>
-        </div>
-      </a>
-      
-      <a class="card" href="https://favicon.im/zh/" target="_blank">
-        <div class="card-icon">
-          <img src="img/favicon.png" alt="Favicon">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Favicon</div>
-          <div class="card-desc">即时网站图标获取器</div>
-        </div>
-      </a>
-      
-      <a class="card" href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=24907" target="_blank">
-        <div class="card-icon">
-          <img src="img/iconfont.png" alt="iconfont">
-        </div>
-        <div class="card-info">
-          <div class="card-title">iconfont</div>
-          <div class="card-desc">阿里巴巴矢量图标库</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://icons8.com/icons/set/digital--style-plumpy" target="_blank">
-        <div class="card-icon">
-          <img src="img/icons8.png" alt="icons8">
-        </div>
-        <div class="card-info">
-          <div class="card-title">icons8</div>
-          <div class="card-desc">plumpy半透ui</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://zhutix.com/tag/tubiao/" target="_blank">
-        <div class="card-icon">
-          <img src="img/zmh.png" alt="致美化">
-        </div>
-        <div class="card-info">
-          <div class="card-title">致美化</div>
-          <div class="card-desc">视觉美化研究平台</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- 开源项目分类 -->
-  <div class="section" data-category="开源" data-index="6">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      开源项目
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://github.com/iosrxwy/Telegrammask" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="Telegrammask">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Github</div>
-          <div class="card-desc">TG伪装计算器插件</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/NightwindDev/Tweak-Tutorial" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="Ios-Tweak">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Ios-Tweak</div>
-          <div class="card-desc">ios越狱插件开发教程</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/axiref/telegram-pwsbot" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="TG投稿BOT">
-        </div>
-        <div class="card-info">
-          <div class="card-title">TG投稿BOT</div>
-          <div class="card-desc">telegram投稿机器人</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/krau/SaveAny-Bot" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="SaveAny-Bot">
-        </div>
-        <div class="card-info">
-          <div class="card-title">SaveAny-Bot</div>
-          <div class="card-desc">TG资源转存机器人</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/wangwangit/SubsTracker" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="SubsTracker">
-        </div>
-        <div class="card-info">
-          <div class="card-title">SubsTracker</div>
-          <div class="card-desc">订阅管理与提醒系统</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/wangwangit/nav" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="nav">
-        </div>
-        <div class="card-info">
-          <div class="card-title">nav</div>
-          <div class="card-desc">书签收藏与分享导航站</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/wangwangit/short" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="short-link">
-        </div>
-        <div class="card-info">
-          <div class="card-title">short-link</div>
-          <div class="card-desc">长链缩短链加密服务</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/jinqians/VPSMonitorBot" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="vpsmonitorbot">
-        </div>
-        <div class="card-info">
-          <div class="card-title">vpsmonitorbot</div>
-          <div class="card-desc">VPS补货通知Bot</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/52Lxcloud/TGChatBot" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="TGchatbot">
-        </div>
-        <div class="card-info">
-          <div class="card-title">TGchatbot</div>
-          <div class="card-desc">TG消息转发分组bot</div>
-        </div>
-      </a>
-      
-      <a class="card" href="https://github.com/Eugeny/tabby/blob/master/README.zh-CN.md" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="Tabby">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Tabby</div>
-          <div class="card-desc">SSH开源客户端</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/vastsa/FileCodeBox" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="FileCodeBox">
-        </div>
-        <div class="card-info">
-          <div class="card-title">FileCodeBox</div>
-          <div class="card-desc">匿名口令存取文件</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://github.com/senshinya/MoonTV" target="_blank">
-        <div class="card-icon">
-          <img src="img/github.png" alt="MoonTv">
-        </div>
-        <div class="card-info">
-          <div class="card-title">MoonTv</div>
-          <div class="card-desc">影视播放站</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- 服务器站分类 -->
-  <div class="section" data-category="服务器" data-index="7">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      服务器站
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://greencloudvps.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="绿云">
-        </div>
-        <div class="card-info">
-          <div class="card-title">绿云</div>
-          <div class="card-desc">jp自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://bwh89.net" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="搬瓦工">
-        </div>
-        <div class="card-info">
-          <div class="card-title">搬瓦工</div>
-          <div class="card-desc">us自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.dmit.io" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="Dmit">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Dmit</div>
-          <div class="card-desc">jp自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://app.rainyun.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="雨云">
-        </div>
-        <div class="card-info">
-          <div class="card-title">雨云</div>
-          <div class="card-desc">文件/车队/转发机器人</div>
-        </div>
-      </a>
-    </div>
-  </div>
+  <div class="section-wrapper" id="sectionWrapper">  
   
-  <!-- 加密内容分类 -->
-  <div class="section" data-category="加密" data-index="8">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      加密内容
-      <!-- 加锁按钮 -->
-      <img src="svg/jiami.svg" id="lock-icon" class="lock-icon" onclick="toggleLock()" alt="加锁" data-state="locked" />
-    </div>
-
-    <!-- 加锁内容区域（默认隐藏） -->
-    <div id="locked-category" style="display: none;">
+    /* 横向滚动容器 */
+    .section-wrapper {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 每页内容区域 */
+    .section {
+      scroll-snap-align: start;
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }  
+    
+    <!-- 常用工具分类 -->
+    <div class="section" data-category="常用" data-index="1">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        常用工具
+      </div>
+  
       <div class="card-grid">
-        <a class="card" href="https://cn.pornhub.com" target="_blank">
+        <a class="card" href="https://chatgpt.com" target="_blank">
           <div class="card-icon">
-            <img src="img/xx.png" alt="pornhub">
+            <img src="img/chatgpt.png" alt="ChatGPT">
           </div>
           <div class="card-info">
-            <div class="card-title">pornhub</div>
-            <div class="card-desc">p站</div>
+            <div class="card-title">ChatGPT</div>
+            <div class="card-desc">国外AI智能助手</div>
           </div>
         </a>
-
-        <a class="card" href="https://www.sehuatang.net" target="_blank">
+  
+        <a class="card" href="https://chat.deepseek.com" target="_blank">
           <div class="card-icon">
-            <img src="img/xx.png" alt=色花堂">
+            <img src="https://chat.deepseek.com/favicon.ico" onerror="this.src='img/deepseek.png'" alt="DeepSeek">
           </div>
           <div class="card-info">
-            <div class="card-title">色花堂</div>
-            <div class="card-desc">论坛</div>
+            <div class="card-title">DeepSeek</div>
+            <div class="card-desc">国内AI智能助手</div>
           </div>
         </a>
-
-        <a class="card" href="https://www.fanhaolou.com" target="_blank">
+  
+        <a class="card" href="https://www.doubao.com" target="_blank">
           <div class="card-icon">
-            <img src="img/xx.png" alt=番号楼">
+            <img src="https://www.doubao.com/favicon.ico" onerror="this.src='img/doubao.png'" alt="豆包">
           </div>
           <div class="card-info">
-            <div class="card-title">番号楼</div>
-            <div class="card-desc">没有找不到的番号</div>
+            <div class="card-title">豆包</div>
+            <div class="card-desc">字节跳动旗下AI助手</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://gemini.google.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/gemini.png" alt="Gemini">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Gemini</div>
+            <div class="card-desc">Google旗下AI助手</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="Github">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Github</div>
+            <div class="card-desc">开源项目社区</div>
           </div>
         </a>
       </div>
     </div>
-  </div>
+  
+    <!-- 实用网站分类 -->
+    <div class="section" data-category="实用" data-index="2">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        实用网站
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="https://github.com/opa334/TrollStore" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt=TrollStore">
+          </div>
+          <div class="card-info">
+            <div class="card-title">TrollStore</div>
+            <div class="card-desc">ios免签名安装软件</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://ids.hongqu.site" target="_blank">
+          <div class="card-icon">
+            <img src="img/shadowrocket.png" alt="红渠">
+          </div>
+          <div class="card-info">
+            <div class="card-title">红渠</div>
+            <div class="card-desc">最新共享小火煎账号</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://whatshub.top" target="_blank">
+          <div class="card-icon">
+            <img src="img/vpn.png" alt=Yfamily">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Yfamily</div>
+            <div class="card-desc">各种代理工具相关配置</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://sspai.com/page/playbook/zh-CN" target="_blank">
+          <div class="card-icon">
+            <img src="img/shortcuts1.png" alt=少数派">
+          </div>
+          <div class="card-info">
+            <div class="card-title">少数派</div>
+            <div class="card-desc">快捷指令仓库</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.kejicut.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/shortcuts2.png" alt=柯基捷径库">
+          </div>
+          <div class="card-info">
+            <div class="card-title">柯基捷径库</div>
+            <div class="card-desc">ios快捷指令中心</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.seemac.cn" target="_blank">
+          <div class="card-icon">
+            <img src="img/mac.png" alt=SeeMac">
+          </div>
+          <div class="card-info">
+            <div class="card-title">SeeMac</div>
+            <div class="card-desc">Mac软件游戏资源站</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://geekuninstaller.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/clear.png" alt=GeekUninstaller">
+          </div>
+          <div class="card-info">
+            <div class="card-title">GeekUninstaller</div>
+            <div class="card-desc">Win强制卸载软件</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.gequhai.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=歌曲海">
+          </div>
+          <div class="card-info">
+            <div class="card-title">歌曲海</div>
+            <div class="card-desc">高品质mp3下载</div>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+  
+    <!-- 影视网站分类 -->
+    <div class="section" data-category="影视" data-index="3">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        影视网站
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="http://www.饭太硬.net" target="_blank">
+          <div class="card-icon">
+            <img src="img/tvos.png" alt="饭太硬">
+          </div>
+          <div class="card-info">
+            <div class="card-title">饭太硬</div>
+            <div class="card-desc">TV端影视资源导航</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.djzyw.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/duanju.png" alt=短剧资源网">
+          </div>
+          <div class="card-info">
+            <div class="card-title">短剧资源网</div>
+            <div class="card-desc">最新狗血短剧资源</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://moontv.vime50.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=moontv">
+          </div>
+          <div class="card-info">
+            <div class="card-title">moontv</div>
+            <div class="card-desc">观影采集站</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://panku.app" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=盘库吧">
+          </div>
+          <div class="card-info">
+            <div class="card-title">盘库吧</div>
+            <div class="card-desc">全网网盘资源在线搜索</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.916dm.fans" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=樱花动漫">
+          </div>
+          <div class="card-info">
+            <div class="card-title">樱花动漫</div>
+            <div class="card-desc">动漫/电视剧/综艺网站</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.jumomo.fun" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=剧馍馍">
+          </div>
+          <div class="card-info">
+            <div class="card-title">剧馍馍</div>
+            <div class="card-desc">电影/动漫/电视剧/综艺</div>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+  
+    <!-- 论坛资源分类 -->
+    <div class="section" data-category="论坛" data-index="4">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        论坛资源
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="https://xd.x6d.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/luntan.png" alt="小刀娱乐网">
+          </div>
+          <div class="card-info">
+            <div class="card-title">小刀娱乐网</div>
+            <div class="card-desc">活动/软件/教程资源分享</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://edu.52it.de" target="_blank">
+          <div class="card-icon">
+            <img src="img/edu.png" alt=学生免费资源">
+          </div>
+          <div class="card-info">
+            <div class="card-title">学生免费资源</div>
+            <div class="card-desc">教育邮箱优惠资源分享</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <!-- 美化网站分类 -->
+    <div class="section" data-category="美化" data-index="5">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        美化网站
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="https://yukonga.github.io/HQ-ICON/" target="_blank">
+          <div class="card-icon">
+            <img src="img/appstore.png" alt="HQ-Icon">
+          </div>
+          <div class="card-info">
+            <div class="card-title">HQ-Icon</div>
+            <div class="card-desc">获取appstore应用图标</div>
+          </div>
+        </a>
+        
+        <a class="card" href="https://favicon.im/zh/" target="_blank">
+          <div class="card-icon">
+            <img src="img/favicon.png" alt="Favicon">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Favicon</div>
+            <div class="card-desc">即时网站图标获取器</div>
+          </div>
+        </a>
+        
+        <a class="card" href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=24907" target="_blank">
+          <div class="card-icon">
+            <img src="img/iconfont.png" alt="iconfont">
+          </div>
+          <div class="card-info">
+            <div class="card-title">iconfont</div>
+            <div class="card-desc">阿里巴巴矢量图标库</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://icons8.com/icons/set/digital--style-plumpy" target="_blank">
+          <div class="card-icon">
+            <img src="img/icons8.png" alt="icons8">
+          </div>
+          <div class="card-info">
+            <div class="card-title">icons8</div>
+            <div class="card-desc">plumpy半透ui</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://zhutix.com/tag/tubiao/" target="_blank">
+          <div class="card-icon">
+            <img src="img/zmh.png" alt="致美化">
+          </div>
+          <div class="card-info">
+            <div class="card-title">致美化</div>
+            <div class="card-desc">视觉美化研究平台</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <!-- 开源项目分类 -->
+    <div class="section" data-category="开源" data-index="6">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        开源项目
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="https://github.com/iosrxwy/Telegrammask" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="Telegrammask">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Github</div>
+            <div class="card-desc">TG伪装计算器插件</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/NightwindDev/Tweak-Tutorial" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="Ios-Tweak">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Ios-Tweak</div>
+            <div class="card-desc">ios越狱插件开发教程</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/axiref/telegram-pwsbot" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="TG投稿BOT">
+          </div>
+          <div class="card-info">
+            <div class="card-title">TG投稿BOT</div>
+            <div class="card-desc">telegram投稿机器人</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/krau/SaveAny-Bot" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="SaveAny-Bot">
+          </div>
+          <div class="card-info">
+            <div class="card-title">SaveAny-Bot</div>
+            <div class="card-desc">TG资源转存机器人</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/wangwangit/SubsTracker" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="SubsTracker">
+          </div>
+          <div class="card-info">
+            <div class="card-title">SubsTracker</div>
+            <div class="card-desc">订阅管理与提醒系统</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/wangwangit/nav" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="nav">
+          </div>
+          <div class="card-info">
+            <div class="card-title">nav</div>
+            <div class="card-desc">书签收藏与分享导航站</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/wangwangit/short" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="short-link">
+          </div>
+          <div class="card-info">
+            <div class="card-title">short-link</div>
+            <div class="card-desc">长链缩短链加密服务</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/jinqians/VPSMonitorBot" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="vpsmonitorbot">
+          </div>
+          <div class="card-info">
+            <div class="card-title">vpsmonitorbot</div>
+            <div class="card-desc">VPS补货通知Bot</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/52Lxcloud/TGChatBot" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="TGchatbot">
+          </div>
+          <div class="card-info">
+            <div class="card-title">TGchatbot</div>
+            <div class="card-desc">TG消息转发分组bot</div>
+          </div>
+        </a>
+        
+        <a class="card" href="https://github.com/Eugeny/tabby/blob/master/README.zh-CN.md" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="Tabby">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Tabby</div>
+            <div class="card-desc">SSH开源客户端</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/vastsa/FileCodeBox" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="FileCodeBox">
+          </div>
+          <div class="card-info">
+            <div class="card-title">FileCodeBox</div>
+            <div class="card-desc">匿名口令存取文件</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://github.com/senshinya/MoonTV" target="_blank">
+          <div class="card-icon">
+            <img src="img/github.png" alt="MoonTv">
+          </div>
+          <div class="card-info">
+            <div class="card-title">MoonTv</div>
+            <div class="card-desc">影视播放站</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <!-- 服务器站分类 -->
+    <div class="section" data-category="服务器" data-index="7">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        服务器站
+      </div>
+  
+      <div class="card-grid">
+        <a class="card" href="https://greencloudvps.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/vps.png" alt="绿云">
+          </div>
+          <div class="card-info">
+            <div class="card-title">绿云</div>
+            <div class="card-desc">jp自建节点</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://bwh89.net" target="_blank">
+          <div class="card-icon">
+            <img src="img/vps.png" alt="搬瓦工">
+          </div>
+          <div class="card-info">
+            <div class="card-title">搬瓦工</div>
+            <div class="card-desc">us自建节点</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://www.dmit.io" target="_blank">
+          <div class="card-icon">
+            <img src="img/vps.png" alt="Dmit">
+          </div>
+          <div class="card-info">
+            <div class="card-title">Dmit</div>
+            <div class="card-desc">jp自建节点</div>
+          </div>
+        </a>
+  
+        <a class="card" href="https://app.rainyun.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/vps.png" alt="雨云">
+          </div>
+          <div class="card-info">
+            <div class="card-title">雨云</div>
+            <div class="card-desc">文件/车队/转发机器人</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 加密内容分类 -->
+    <div class="section" data-category="加密" data-index="8">
+      <div class="section-title">
+        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+        加密内容
+        <!-- 加锁按钮 -->
+        <img src="svg/jiami.svg" id="lock-icon" class="lock-icon" onclick="toggleLock()" alt="加锁" data-state="locked" />
+      </div>
+  
+      <!-- 加锁内容区域（默认隐藏） -->
+      <div id="locked-category" style="display: none;">
+        <div class="card-grid">
+          <a class="card" href="https://cn.pornhub.com" target="_blank">
+            <div class="card-icon">
+              <img src="img/xx.png" alt="pornhub">
+            </div>
+            <div class="card-info">
+              <div class="card-title">pornhub</div>
+              <div class="card-desc">p站</div>
+            </div>
+          </a>
+  
+          <a class="card" href="https://www.sehuatang.net" target="_blank">
+            <div class="card-icon">
+              <img src="img/xx.png" alt=色花堂">
+            </div>
+            <div class="card-info">
+              <div class="card-title">色花堂</div>
+              <div class="card-desc">论坛</div>
+            </div>
+          </a>
+  
+          <a class="card" href="https://www.fanhaolou.com" target="_blank">
+            <div class="card-icon">
+              <img src="img/xx.png" alt=番号楼">
+            </div>
+            <div class="card-info">
+              <div class="card-title">番号楼</div>
+              <div class="card-desc">没有找不到的番号</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
 
   <!-- 固定右侧按钮 -->
   <div class="fixed-buttons">
@@ -1185,7 +1187,8 @@
       </div>
     </div>
   </div>
-
+</div>
+  
   <script>
     const tabButtons = document.querySelectorAll(".tab");
     const tabIndicator = document.getElementById("tabIndicator");
