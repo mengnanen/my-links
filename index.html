@@ -163,6 +163,22 @@
       border-radius: 2px;
       transition: transform 0.3s ease;
     }
+
+        /* 横向滚动容器 */
+    .section-wrapper {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 每页内容区域 */
+    .section {
+      scroll-snap-align: start;
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
     
     /* 分类整体模块与下一个模块之间的间距 */
     .section {
@@ -593,23 +609,7 @@
     </div>
   </div>
 
-  <div class="section-wrapper" id="sectionWrapper">  
-  
-    /* 横向滚动容器 */
-    .section-wrapper {
-      display: flex;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* 每页内容区域 */
-    .section {
-      scroll-snap-align: start;
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      padding: 10px;
-    }  
+  <div class="section-wrapper" id="sectionWrapper"> 
     
     <!-- 常用工具分类 -->
     <div class="section" data-category="常用" data-index="1">
