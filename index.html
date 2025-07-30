@@ -1183,9 +1183,28 @@
     // 标签按钮点击切换
     tabButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
-        currentIndex = index;
-        updateActiveTab(index);
-        scrollToSection(index);
+        const category = button.dataset.category;
+    
+        if (category === "all") {
+          // “全部”标签逻辑：不滑动页面，显示所有 section
+          document.querySelectorAll(".section").forEach(sec => sec.style.display = "block");
+          sectionWrapper.scrollTo({ left: 0, behavior: "smooth" });
+          currentIndex = 0;
+          updateActiveTab(index);
+        } else {
+          // 其他标签：只显示一个 section，并滑动
+          document.querySelectorAll(".section").forEach(sec => {
+            if (sec.dataset.category === category) {
+              sec.style.display = "block";
+            } else {
+              sec.style.display = "none";
+            }
+          });
+
+          currentIndex = parseInt(button.dataset.index);
+          updateActiveTab(index);
+          scrollToSection(currentIndex);
+        }
       });
     });
 
@@ -1214,6 +1233,20 @@
         currentIndex = index;
         updateActiveTab(index);
       }
+    });
+
+    // 页面初始指示器对齐 + 默认显示第一个 section（常用）
+    window.addEventListener("load", () => {
+      updateActiveTab(0); // 指示器移动到第一个 tab（全部）
+
+      // 默认只显示 data-index="1" 的 section（常用）
+      document.querySelectorAll(".section").forEach(sec => {
+        if (sec.dataset.index === "1") {
+          sec.style.display = "block";
+        } else {
+          sec.style.display = "none";
+        }
+      });
     });
 
     // 搜索过滤（只当前页）
