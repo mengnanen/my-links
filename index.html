@@ -27,7 +27,7 @@
       color: #eee; /* 更亮的白色字体 */
     }
 
-    /* 标签按钮容器整体样式 */
+    /* 标签按钮容器整体参数 */
     .category-tabs {
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
@@ -40,7 +40,7 @@
         scrollbar-width: none;     /* 隐藏滚动条样式-Firefox */
     }
 
-    /* 每个标签按钮样式 */
+    /* 每个标签按钮参数 */
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
         padding: 6px 12px;          /* 内边距：上下6px，左右12px */
@@ -81,9 +81,9 @@
         content: "";                         /* 伪元素用于下划线 */
         position: absolute;
         bottom: -6px;                        /* ⬅️ 距离按钮底部的距离，可调 */
-        /*横线在按钮中居中（左右各留 25% 空隙） */
-        left: 25%;                           /* ⬅️ 水平位置起点，可调 */
-        width: 50%;                          /* ⬅️ 横线宽度百分比，可调 */
+        /*下划线在按钮下居中（左右各留10%空隙） */
+        left: 10%;                           /* ⬅️ 水平位置起点，可调 */
+        width: 80%;                          /* ⬅️ 横线宽度百分比，可调 */
         height: 3px;                         /* ⬅️ 横线高度 */
         background-color: #007bff;          /* 横线颜色，可换成你喜欢的颜色 */
         border-radius: 2px;
@@ -116,7 +116,6 @@
     /* 暗黑模式滚动条滑块 */
     [data-theme='dark'] .category-tabs::-webkit-scrollbar-thumb {
         background: #aaa;
-
     }
 
     /* 暗黑模式鼠标悬停时滑块颜色变化 */
@@ -271,7 +270,7 @@
       margin-left: 2px; /* 文字区域向左靠近 */
     }
 
-    /* 网站名称 */
+    /* 卡片中网站名称 */
     .card-title {
       font-weight: bold;
       font-size: 0.9em;
@@ -289,7 +288,7 @@
       max-width: 130px;
     }
 
-    /* 暗黑模式描述文字 */
+    /* 暗黑模式卡片描述文字 */
     [data-theme='dark'] .card-desc {
       color: #bbb;
     }
@@ -330,7 +329,6 @@
       background-color: #2a2a2a;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
-
 
     /* 鼠标悬停时的按钮背景变浅 */
     .footer-icons a:hover {
@@ -481,7 +479,6 @@
         box-sizing: border-box;
     }
 
-    /* 加密弹窗暗黑模式适配 */
     /* 加密弹窗盒子暗黑模式 */
     [data-theme='dark'] .modal-box {
         background: #1e1e1e;     /* 背景色：深灰色 */
