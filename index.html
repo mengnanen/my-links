@@ -153,6 +153,33 @@
       color: #888;
     }
 
+    /* 横线指示器 */
+    .tab-indicator {
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      width: 30px;
+      background-color: #007bff;
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    /* 横向滚动容器 */
+    .section-wrapper {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 每页内容区域 */
+    .section {
+      scroll-snap-align: start;
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+    
     /* 分类整体模块与下一个模块之间的间距 */
     .section {
       margin-bottom: 25px;
@@ -559,26 +586,31 @@
   <!-- 页面主标题 -->
   <h1>私人网站导航</h1>
 
-  <!-- 分类标签 -->
-  <div class="category-tabs">
-    <button class="tab active" data-category="all">全部</button>
-    <button class="tab" data-category="常用">常用</button>
-    <button class="tab" data-category="实用">实用</button>
-    <button class="tab" data-category="影视">影视</button>
-    <button class="tab" data-category="论坛">论坛</button>
-    <button class="tab" data-category="美化">美化</button>
-    <button class="tab" data-category="开源">开源</button>
-    <button class="tab" data-category="服务器">服务器</button>
-    <button class="tab" data-category="加密">加密</button>
-  </div>
+  <!-- 顶部按钮标签 + 滑动指示横线 + 搜索框 -->
+  <!-- 顶部按钮标签 -->  
+  <div class="tab-header-container">
+    <div class="category-tabs" id="tabButtons">
+      <button class="tab active" data-category="全部">全部</button>
+      <button class="tab" data-index="1" data-category="常用">常用</button>
+      <button class="tab" data-index="2" data-category="实用">实用</button>
+      <button class="tab" data-index="3" data-category="影视">影视</button>
+      <button class="tab" data-index="4" data-category="论坛">论坛</button>
+      <button class="tab" data-index="5" data-category="美化">美化</button>
+      <button class="tab" data-index="6" data-category="开源">开源</button>
+      <button class="tab" data-index="7" data-category="服务器">服务器</button>      
+      <button class="tab" data-index="8" data-category="加密">加密</button>
+      <!-- 横线指示器 -->
+      <div class="tab-indicator" id="tabIndicator"></div>
+    </div>
 
-  <!-- 搜索框 -->
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="🔍 搜索你感兴趣的网站..." oninput="filterCards()">
+    <!-- 搜索框 -->    
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="🔍 搜索网站名称或描述...">
+    </div>
   </div>
 
   <!-- 常用工具分类 -->
-  <div class="section" data-category="常用">
+  <div class="section" data-category="常用" data-index="1">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       常用工具
@@ -638,7 +670,7 @@
   </div>
 
   <!-- 实用网站分类 -->
-  <div class="section" data-category="实用">
+  <div class="section" data-category="实用" data-index="2">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       实用网站
@@ -729,7 +761,7 @@
   </div>
 
   <!-- 影视网站分类 -->
-  <div class="section" data-category="影视">
+  <div class="section" data-category="影视" data-index="3">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       影视网站
@@ -800,7 +832,7 @@
   </div>
 
   <!-- 论坛资源分类 -->
-  <div class="section" data-category="论坛">
+  <div class="section" data-category="论坛" data-index="4">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       论坛资源
@@ -829,58 +861,8 @@
     </div>
   </div>
 
-  <!-- 服务器站分类 -->
-  <div class="section" data-category="服务器">
-    <div class="section-title">
-      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-      服务器站
-    </div>
-
-    <div class="card-grid">
-      <a class="card" href="https://greencloudvps.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="绿云">
-        </div>
-        <div class="card-info">
-          <div class="card-title">绿云</div>
-          <div class="card-desc">jp自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://bwh89.net" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="搬瓦工">
-        </div>
-        <div class="card-info">
-          <div class="card-title">搬瓦工</div>
-          <div class="card-desc">us自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://www.dmit.io" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="Dmit">
-        </div>
-        <div class="card-info">
-          <div class="card-title">Dmit</div>
-          <div class="card-desc">jp自建节点</div>
-        </div>
-      </a>
-
-      <a class="card" href="https://app.rainyun.com" target="_blank">
-        <div class="card-icon">
-          <img src="img/vps.png" alt="雨云">
-        </div>
-        <div class="card-info">
-          <div class="card-title">雨云</div>
-          <div class="card-desc">文件/车队/转发机器人</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
   <!-- 美化网站分类 -->
-  <div class="section" data-category="美化">
+  <div class="section" data-category="美化" data-index="5">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       美化网站
@@ -940,7 +922,7 @@
   </div>
 
   <!-- 开源项目分类 -->
-  <div class="section" data-category="开源">
+  <div class="section" data-category="开源" data-index="6">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       开源项目
@@ -1069,8 +1051,58 @@
     </div>
   </div>
 
+  <!-- 服务器站分类 -->
+  <div class="section" data-category="服务器" data-index="7">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      服务器站
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="https://greencloudvps.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="绿云">
+        </div>
+        <div class="card-info">
+          <div class="card-title">绿云</div>
+          <div class="card-desc">jp自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://bwh89.net" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="搬瓦工">
+        </div>
+        <div class="card-info">
+          <div class="card-title">搬瓦工</div>
+          <div class="card-desc">us自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.dmit.io" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="Dmit">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Dmit</div>
+          <div class="card-desc">jp自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://app.rainyun.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="雨云">
+        </div>
+        <div class="card-info">
+          <div class="card-title">雨云</div>
+          <div class="card-desc">文件/车队/转发机器人</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  
   <!-- 加密内容分类 -->
-  <div class="section" data-category="加密">
+  <div class="section" data-category="加密" data-index="8">
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       加密内容
@@ -1155,48 +1187,63 @@
   </div>
 
   <script>
-    // 当前激活分类，默认为 "all"
-    let currentCategory = "all";
+    const tabButtons = document.querySelectorAll(".tab");
+    const tabIndicator = document.getElementById("tabIndicator");
+    const sectionWrapper = document.getElementById("sectionWrapper");
+    const searchInput = document.getElementById("search-input");
 
-    // 给所有标签按钮绑定点击事件
-    document.querySelectorAll(".tab").forEach(button => {
-        button.addEventListener("click", () => {
-            // 清除所有标签的激活样式
-            document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+    let currentIndex = 0;
 
-            // 当前点击的标签添加激活样式
-            button.classList.add("active");
-
-            // 记录当前激活的分类
-            currentCategory = button.dataset.category;
-
-            // 执行过滤逻辑
-            filterSections();
-        });
+    // 标签按钮点击切换
+    tabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        currentIndex = index;
+        updateActiveTab(index);
+        scrollToSection(index);
+      });
     });
 
-    // 搜索框输入监听，输入内容时也触发过滤
-    document.getElementById("search-input").addEventListener("input", filterSections);
+    // 横线移动函数
+    function updateActiveTab(index) {
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+      tabButtons[index].classList.add("active");
 
-    // 分类和关键词过滤函数
-    function filterSections() {
-        // 获取搜索关键词，转小写去空格
-        const keyword = document.getElementById("search-input").value.trim().toLowerCase();
-
-        // 获取所有分类模块
-        const sections = document.querySelectorAll(".section");
-
-        // 遍历每个模块，判断是否显示
-        sections.forEach(section => {
-            const sectionCategory = section.dataset.category || "all"; // 每个模块应设置 data-category
-            const matchCategory = (currentCategory === "all" || sectionCategory === currentCategory); // 判断是否属于当前分类
-            const text = section.innerText.toLowerCase(); // 获取整个模块文字内容
-            const matchKeyword = text.includes(keyword); // 判断是否包含搜索词
-
-            // 同时满足分类和关键词匹配才显示
-            section.style.display = (matchCategory && matchKeyword) ? "block" : "none";
-        });
+      const activeButton = tabButtons[index];
+      const offsetLeft = activeButton.offsetLeft + activeButton.offsetWidth / 2 - 15;
+      tabIndicator.style.transform = `translateX(${offsetLeft}px)`;
     }
+
+    // 页面滑动到对应区域
+    function scrollToSection(index) {
+      const width = sectionWrapper.offsetWidth;
+      sectionWrapper.scrollTo({ left: width * index, behavior: 'smooth' });
+    }
+
+    // 滑动时同步标签指示器
+    sectionWrapper.addEventListener("scroll", () => {
+      const scrollLeft = sectionWrapper.scrollLeft;
+      const width = sectionWrapper.offsetWidth;
+      const index = Math.round(scrollLeft / width);
+      if (index !== currentIndex) {
+        currentIndex = index;
+        updateActiveTab(index);
+      }
+    });
+
+    // 搜索过滤（只当前页）
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim().toLowerCase();
+      const currentSection = document.querySelector(`.section[data-index="${currentIndex}"]`);
+      const cards = currentSection.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(keyword) ? "block" : "none";
+      });
+    });
+
+    // 页面初始指示器对齐
+    window.addEventListener("load", () => updateActiveTab(0));
     
     // 返回顶部按钮
     function scrollToTop() {
