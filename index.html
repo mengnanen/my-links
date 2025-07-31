@@ -27,7 +27,7 @@
       color: #eee; /* 更亮的白色字体 */
     }
 
-    /* 标签按钮容器整体参数 */
+    /* 标签按钮容器整体样式 */
     .category-tabs {
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
@@ -40,7 +40,7 @@
         scrollbar-width: none;     /* 隐藏滚动条样式-Firefox */
     }
 
-    /* 每个标签按钮参数 */
+    /* 每个标签按钮样式 */
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
         padding: 6px 12px;          /* 内边距：上下6px，左右12px */
@@ -52,7 +52,7 @@
         font-size: 14px;            /* 字体大小 */
         cursor: pointer;            /* 鼠标悬停时显示为可点击 */
         transition: background-color 0.2s ease; /* 背景色平滑过渡 */
-        position: relative; /* 每个标签按钮添加相对定位，方便放置下划线 */  
+        position: relative; /* 每个标签按钮添加相对定位，方便放置下划线 */
     }
 
     /* 暗黑模式下的未激活标签按钮 */
@@ -81,9 +81,9 @@
         content: "";                         /* 伪元素用于下划线 */
         position: absolute;
         bottom: -6px;                        /* ⬅️ 距离按钮底部的距离，可调 */
-        /*下划线在按钮下居中（左右各留20%空隙） */
-        left: 20%;                           /* ⬅️ 水平位置起点，可调 */
-        width: 60%;                          /* ⬅️ 横线宽度百分比，可调 */
+        /*横线在按钮中居中（左右各留 25% 空隙） */
+        left: 25%;                           /* ⬅️ 水平位置起点，可调 */
+        width: 50%;                          /* ⬅️ 横线宽度百分比，可调 */
         height: 3px;                         /* ⬅️ 横线高度 */
         background-color: #007bff;          /* 横线颜色，可换成你喜欢的颜色 */
         border-radius: 2px;
@@ -116,6 +116,7 @@
     /* 暗黑模式滚动条滑块 */
     [data-theme='dark'] .category-tabs::-webkit-scrollbar-thumb {
         background: #aaa;
+
     }
 
     /* 暗黑模式鼠标悬停时滑块颜色变化 */
@@ -152,22 +153,6 @@
       color: #888;
     }
 
-    /* 横向滚动容器 */
-    .section-wrapper {
-      display: flex;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* 每页内容区域 */
-    .section {
-      scroll-snap-align: start;
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      padding: 10px;
-    }
-    
     /* 分类整体模块与下一个模块之间的间距 */
     .section {
       margin-bottom: 25px;
@@ -270,7 +255,7 @@
       margin-left: 2px; /* 文字区域向左靠近 */
     }
 
-    /* 卡片中网站名称 */
+    /* 网站名称 */
     .card-title {
       font-weight: bold;
       font-size: 0.9em;
@@ -288,7 +273,7 @@
       max-width: 130px;
     }
 
-    /* 暗黑模式卡片描述文字 */
+    /* 暗黑模式描述文字 */
     [data-theme='dark'] .card-desc {
       color: #bbb;
     }
@@ -329,6 +314,7 @@
       background-color: #2a2a2a;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
     }
+
 
     /* 鼠标悬停时的按钮背景变浅 */
     .footer-icons a:hover {
@@ -479,6 +465,7 @@
         box-sizing: border-box;
     }
 
+    /* 加密弹窗暗黑模式适配 */
     /* 加密弹窗盒子暗黑模式 */
     [data-theme='dark'] .modal-box {
         background: #1e1e1e;     /* 背景色：深灰色 */
@@ -572,565 +559,561 @@
   <!-- 页面主标题 -->
   <h1>私人网站导航</h1>
 
-  <!-- 顶部按钮标签 -->  
-  <div class="tab-header-container">
-    <div class="category-tabs" id="tabButtons">
-      <button class="tab active" data-category="all">全部</button>
-      <button class="tab" data-index="1" data-category="常用">常用</button>
-      <button class="tab" data-index="2" data-category="实用">实用</button>
-      <button class="tab" data-index="3" data-category="影视">影视</button>
-      <button class="tab" data-index="4" data-category="论坛">论坛</button>
-      <button class="tab" data-index="5" data-category="美化">美化</button>
-      <button class="tab" data-index="6" data-category="开源">开源</button>
-      <button class="tab" data-index="7" data-category="服务器">服务器</button>      
-      <button class="tab" data-index="8" data-category="加密">加密</button>
+  <!-- 分类标签 -->
+  <div class="category-tabs">
+    <button class="tab active" data-category="all">全部</button>
+    <button class="tab" data-category="常用">常用</button>
+    <button class="tab" data-category="实用">实用</button>
+    <button class="tab" data-category="影视">影视</button>
+    <button class="tab" data-category="论坛">论坛</button>
+    <button class="tab" data-category="美化">美化</button>
+    <button class="tab" data-category="开源">开源</button>
+    <button class="tab" data-category="服务器">服务器</button>
+    <button class="tab" data-category="加密">加密</button>
+  </div>
+
+  <!-- 搜索框 -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="🔍 搜索你感兴趣的网站..." oninput="filterCards()">
+  </div>
+
+  <!-- 常用工具分类 -->
+  <div class="section" data-category="常用">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      常用工具
     </div>
 
-    <!-- 搜索框 -->    
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="🔍 搜索网站名称或描述...">
+    <div class="card-grid">
+      <a class="card" href="https://chatgpt.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/chatgpt.png" alt="ChatGPT">
+        </div>
+        <div class="card-info">
+          <div class="card-title">ChatGPT</div>
+          <div class="card-desc">国外AI智能助手</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://chat.deepseek.com" target="_blank">
+        <div class="card-icon">
+          <img src="https://chat.deepseek.com/favicon.ico" onerror="this.src='img/deepseek.png'" alt="DeepSeek">
+        </div>
+        <div class="card-info">
+          <div class="card-title">DeepSeek</div>
+          <div class="card-desc">国内AI智能助手</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.doubao.com" target="_blank">
+        <div class="card-icon">
+          <img src="https://www.doubao.com/favicon.ico" onerror="this.src='img/doubao.png'" alt="豆包">
+        </div>
+        <div class="card-info">
+          <div class="card-title">豆包</div>
+          <div class="card-desc">字节跳动旗下AI助手</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://gemini.google.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/gemini.png" alt="Gemini">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Gemini</div>
+          <div class="card-desc">Google旗下AI助手</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="Github">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Github</div>
+          <div class="card-desc">开源项目社区</div>
+        </div>
+      </a>
     </div>
   </div>
 
-  <div class="section-wrapper" id="sectionWrapper"> 
-    
-    <!-- 常用工具分类 -->
-    <div class="section" data-category="常用" data-index="1">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        常用工具
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://chatgpt.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/chatgpt.png" alt="ChatGPT">
-          </div>
-          <div class="card-info">
-            <div class="card-title">ChatGPT</div>
-            <div class="card-desc">国外AI智能助手</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://chat.deepseek.com" target="_blank">
-          <div class="card-icon">
-            <img src="https://chat.deepseek.com/favicon.ico" onerror="this.src='img/deepseek.png'" alt="DeepSeek">
-          </div>
-          <div class="card-info">
-            <div class="card-title">DeepSeek</div>
-            <div class="card-desc">国内AI智能助手</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.doubao.com" target="_blank">
-          <div class="card-icon">
-            <img src="https://www.doubao.com/favicon.ico" onerror="this.src='img/doubao.png'" alt="豆包">
-          </div>
-          <div class="card-info">
-            <div class="card-title">豆包</div>
-            <div class="card-desc">字节跳动旗下AI助手</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://gemini.google.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/gemini.png" alt="Gemini">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Gemini</div>
-            <div class="card-desc">Google旗下AI助手</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="Github">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Github</div>
-            <div class="card-desc">开源项目社区</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  
-    <!-- 实用网站分类 -->
-    <div class="section" data-category="实用" data-index="2">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        实用网站
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://github.com/opa334/TrollStore" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt=TrollStore">
-          </div>
-          <div class="card-info">
-            <div class="card-title">TrollStore</div>
-            <div class="card-desc">ios免签名安装软件</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://ids.hongqu.site" target="_blank">
-          <div class="card-icon">
-            <img src="img/shadowrocket.png" alt="红渠">
-          </div>
-          <div class="card-info">
-            <div class="card-title">红渠</div>
-            <div class="card-desc">最新共享小火煎账号</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://whatshub.top" target="_blank">
-          <div class="card-icon">
-            <img src="img/vpn.png" alt=Yfamily">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Yfamily</div>
-            <div class="card-desc">各种代理工具相关配置</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://sspai.com/page/playbook/zh-CN" target="_blank">
-          <div class="card-icon">
-            <img src="img/shortcuts1.png" alt=少数派">
-          </div>
-          <div class="card-info">
-            <div class="card-title">少数派</div>
-            <div class="card-desc">快捷指令仓库</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.kejicut.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/shortcuts2.png" alt=柯基捷径库">
-          </div>
-          <div class="card-info">
-            <div class="card-title">柯基捷径库</div>
-            <div class="card-desc">ios快捷指令中心</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.seemac.cn" target="_blank">
-          <div class="card-icon">
-            <img src="img/mac.png" alt=SeeMac">
-          </div>
-          <div class="card-info">
-            <div class="card-title">SeeMac</div>
-            <div class="card-desc">Mac软件游戏资源站</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://geekuninstaller.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/clear.png" alt=GeekUninstaller">
-          </div>
-          <div class="card-info">
-            <div class="card-title">GeekUninstaller</div>
-            <div class="card-desc">Win强制卸载软件</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.gequhai.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/xx.png" alt=歌曲海">
-          </div>
-          <div class="card-info">
-            <div class="card-title">歌曲海</div>
-            <div class="card-desc">高品质mp3下载</div>
-          </div>
-        </a>
-        
-      </div>
-    </div>
-  
-    <!-- 影视网站分类 -->
-    <div class="section" data-category="影视" data-index="3">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        影视网站
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="http://www.饭太硬.net" target="_blank">
-          <div class="card-icon">
-            <img src="img/tvos.png" alt="饭太硬">
-          </div>
-          <div class="card-info">
-            <div class="card-title">饭太硬</div>
-            <div class="card-desc">TV端影视资源导航</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.djzyw.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/duanju.png" alt=短剧资源网">
-          </div>
-          <div class="card-info">
-            <div class="card-title">短剧资源网</div>
-            <div class="card-desc">最新狗血短剧资源</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://moontv.vime50.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/xx.png" alt=moontv">
-          </div>
-          <div class="card-info">
-            <div class="card-title">moontv</div>
-            <div class="card-desc">观影采集站</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://panku.app" target="_blank">
-          <div class="card-icon">
-            <img src="img/xx.png" alt=盘库吧">
-          </div>
-          <div class="card-info">
-            <div class="card-title">盘库吧</div>
-            <div class="card-desc">全网网盘资源在线搜索</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.916dm.fans" target="_blank">
-          <div class="card-icon">
-            <img src="img/xx.png" alt=樱花动漫">
-          </div>
-          <div class="card-info">
-            <div class="card-title">樱花动漫</div>
-            <div class="card-desc">动漫/电视剧/综艺网站</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.jumomo.fun" target="_blank">
-          <div class="card-icon">
-            <img src="img/xx.png" alt=剧馍馍">
-          </div>
-          <div class="card-info">
-            <div class="card-title">剧馍馍</div>
-            <div class="card-desc">电影/动漫/电视剧/综艺</div>
-          </div>
-        </a>
-        
-      </div>
-    </div>
-  
-    <!-- 论坛资源分类 -->
-    <div class="section" data-category="论坛" data-index="4">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        论坛资源
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://xd.x6d.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/luntan.png" alt="小刀娱乐网">
-          </div>
-          <div class="card-info">
-            <div class="card-title">小刀娱乐网</div>
-            <div class="card-desc">活动/软件/教程资源分享</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://edu.52it.de" target="_blank">
-          <div class="card-icon">
-            <img src="img/edu.png" alt=学生免费资源">
-          </div>
-          <div class="card-info">
-            <div class="card-title">学生免费资源</div>
-            <div class="card-desc">教育邮箱优惠资源分享</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  
-    <!-- 美化网站分类 -->
-    <div class="section" data-category="美化" data-index="5">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        美化网站
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://yukonga.github.io/HQ-ICON/" target="_blank">
-          <div class="card-icon">
-            <img src="img/appstore.png" alt="HQ-Icon">
-          </div>
-          <div class="card-info">
-            <div class="card-title">HQ-Icon</div>
-            <div class="card-desc">获取appstore应用图标</div>
-          </div>
-        </a>
-        
-        <a class="card" href="https://favicon.im/zh/" target="_blank">
-          <div class="card-icon">
-            <img src="img/favicon.png" alt="Favicon">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Favicon</div>
-            <div class="card-desc">即时网站图标获取器</div>
-          </div>
-        </a>
-        
-        <a class="card" href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=24907" target="_blank">
-          <div class="card-icon">
-            <img src="img/iconfont.png" alt="iconfont">
-          </div>
-          <div class="card-info">
-            <div class="card-title">iconfont</div>
-            <div class="card-desc">阿里巴巴矢量图标库</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://icons8.com/icons/set/digital--style-plumpy" target="_blank">
-          <div class="card-icon">
-            <img src="img/icons8.png" alt="icons8">
-          </div>
-          <div class="card-info">
-            <div class="card-title">icons8</div>
-            <div class="card-desc">plumpy半透ui</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://zhutix.com/tag/tubiao/" target="_blank">
-          <div class="card-icon">
-            <img src="img/zmh.png" alt="致美化">
-          </div>
-          <div class="card-info">
-            <div class="card-title">致美化</div>
-            <div class="card-desc">视觉美化研究平台</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  
-    <!-- 开源项目分类 -->
-    <div class="section" data-category="开源" data-index="6">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        开源项目
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://github.com/iosrxwy/Telegrammask" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="Telegrammask">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Github</div>
-            <div class="card-desc">TG伪装计算器插件</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/NightwindDev/Tweak-Tutorial" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="Ios-Tweak">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Ios-Tweak</div>
-            <div class="card-desc">ios越狱插件开发教程</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/axiref/telegram-pwsbot" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="TG投稿BOT">
-          </div>
-          <div class="card-info">
-            <div class="card-title">TG投稿BOT</div>
-            <div class="card-desc">telegram投稿机器人</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/krau/SaveAny-Bot" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="SaveAny-Bot">
-          </div>
-          <div class="card-info">
-            <div class="card-title">SaveAny-Bot</div>
-            <div class="card-desc">TG资源转存机器人</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/wangwangit/SubsTracker" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="SubsTracker">
-          </div>
-          <div class="card-info">
-            <div class="card-title">SubsTracker</div>
-            <div class="card-desc">订阅管理与提醒系统</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/wangwangit/nav" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="nav">
-          </div>
-          <div class="card-info">
-            <div class="card-title">nav</div>
-            <div class="card-desc">书签收藏与分享导航站</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/wangwangit/short" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="short-link">
-          </div>
-          <div class="card-info">
-            <div class="card-title">short-link</div>
-            <div class="card-desc">长链缩短链加密服务</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/jinqians/VPSMonitorBot" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="vpsmonitorbot">
-          </div>
-          <div class="card-info">
-            <div class="card-title">vpsmonitorbot</div>
-            <div class="card-desc">VPS补货通知Bot</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/52Lxcloud/TGChatBot" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="TGchatbot">
-          </div>
-          <div class="card-info">
-            <div class="card-title">TGchatbot</div>
-            <div class="card-desc">TG消息转发分组bot</div>
-          </div>
-        </a>
-        
-        <a class="card" href="https://github.com/Eugeny/tabby/blob/master/README.zh-CN.md" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="Tabby">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Tabby</div>
-            <div class="card-desc">SSH开源客户端</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/vastsa/FileCodeBox" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="FileCodeBox">
-          </div>
-          <div class="card-info">
-            <div class="card-title">FileCodeBox</div>
-            <div class="card-desc">匿名口令存取文件</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://github.com/senshinya/MoonTV" target="_blank">
-          <div class="card-icon">
-            <img src="img/github.png" alt="MoonTv">
-          </div>
-          <div class="card-info">
-            <div class="card-title">MoonTv</div>
-            <div class="card-desc">影视播放站</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  
-    <!-- 服务器站分类 -->
-    <div class="section" data-category="服务器" data-index="7">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        服务器站
-      </div>
-  
-      <div class="card-grid">
-        <a class="card" href="https://greencloudvps.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/vps.png" alt="绿云">
-          </div>
-          <div class="card-info">
-            <div class="card-title">绿云</div>
-            <div class="card-desc">jp自建节点</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://bwh89.net" target="_blank">
-          <div class="card-icon">
-            <img src="img/vps.png" alt="搬瓦工">
-          </div>
-          <div class="card-info">
-            <div class="card-title">搬瓦工</div>
-            <div class="card-desc">us自建节点</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://www.dmit.io" target="_blank">
-          <div class="card-icon">
-            <img src="img/vps.png" alt="Dmit">
-          </div>
-          <div class="card-info">
-            <div class="card-title">Dmit</div>
-            <div class="card-desc">jp自建节点</div>
-          </div>
-        </a>
-  
-        <a class="card" href="https://app.rainyun.com" target="_blank">
-          <div class="card-icon">
-            <img src="img/vps.png" alt="雨云">
-          </div>
-          <div class="card-info">
-            <div class="card-title">雨云</div>
-            <div class="card-desc">文件/车队/转发机器人</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    
-    <!-- 加密内容分类 -->
-    <div class="section" data-category="加密" data-index="8">
-      <div class="section-title">
-        <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
-        加密内容
-        <!-- 加锁按钮 -->
-        <img src="svg/jiami.svg" id="lock-icon" class="lock-icon" onclick="toggleLock()" alt="加锁" data-state="locked" />
-      </div>
-  
-      <!-- 加锁内容区域（默认隐藏） -->
-      <div id="locked-category" style="display: none;">
-        <div class="card-grid">
-          <a class="card" href="https://cn.pornhub.com" target="_blank">
-            <div class="card-icon">
-              <img src="img/xx.png" alt="pornhub">
-            </div>
-            <div class="card-info">
-              <div class="card-title">pornhub</div>
-              <div class="card-desc">p站</div>
-            </div>
-          </a>
-  
-          <a class="card" href="https://www.sehuatang.net" target="_blank">
-            <div class="card-icon">
-              <img src="img/xx.png" alt=色花堂">
-            </div>
-            <div class="card-info">
-              <div class="card-title">色花堂</div>
-              <div class="card-desc">论坛</div>
-            </div>
-          </a>
-  
-          <a class="card" href="https://www.fanhaolou.com" target="_blank">
-            <div class="card-icon">
-              <img src="img/xx.png" alt=番号楼">
-            </div>
-            <div class="card-info">
-              <div class="card-title">番号楼</div>
-              <div class="card-desc">没有找不到的番号</div>
-            </div>
-          </a>
-        </div>
-      </div>
+  <!-- 实用网站分类 -->
+  <div class="section" data-category="实用">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      实用网站
     </div>
 
+    <div class="card-grid">
+      <a class="card" href="https://github.com/opa334/TrollStore" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt=TrollStore">
+        </div>
+        <div class="card-info">
+          <div class="card-title">TrollStore</div>
+          <div class="card-desc">ios免签名安装软件</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://ids.hongqu.site" target="_blank">
+        <div class="card-icon">
+          <img src="img/shadowrocket.png" alt="红渠">
+        </div>
+        <div class="card-info">
+          <div class="card-title">红渠</div>
+          <div class="card-desc">最新共享小火煎账号</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://whatshub.top" target="_blank">
+        <div class="card-icon">
+          <img src="img/vpn.png" alt=Yfamily">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Yfamily</div>
+          <div class="card-desc">各种代理工具相关配置</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://sspai.com/page/playbook/zh-CN" target="_blank">
+        <div class="card-icon">
+          <img src="img/shortcuts1.png" alt=少数派">
+        </div>
+        <div class="card-info">
+          <div class="card-title">少数派</div>
+          <div class="card-desc">快捷指令仓库</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.kejicut.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/shortcuts2.png" alt=柯基捷径库">
+        </div>
+        <div class="card-info">
+          <div class="card-title">柯基捷径库</div>
+          <div class="card-desc">ios快捷指令中心</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.seemac.cn" target="_blank">
+        <div class="card-icon">
+          <img src="img/mac.png" alt=SeeMac">
+        </div>
+        <div class="card-info">
+          <div class="card-title">SeeMac</div>
+          <div class="card-desc">Mac软件游戏资源站</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://geekuninstaller.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/clear.png" alt=GeekUninstaller">
+        </div>
+        <div class="card-info">
+          <div class="card-title">GeekUninstaller</div>
+          <div class="card-desc">Win强制卸载软件</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.gequhai.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/xx.png" alt=歌曲海">
+        </div>
+        <div class="card-info">
+          <div class="card-title">歌曲海</div>
+          <div class="card-desc">高品质mp3下载</div>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- 影视网站分类 -->
+  <div class="section" data-category="影视">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      影视网站
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="http://www.饭太硬.net" target="_blank">
+        <div class="card-icon">
+          <img src="img/tvos.png" alt="饭太硬">
+        </div>
+        <div class="card-info">
+          <div class="card-title">饭太硬</div>
+          <div class="card-desc">TV端影视资源导航</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.djzyw.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/duanju.png" alt=短剧资源网">
+        </div>
+        <div class="card-info">
+          <div class="card-title">短剧资源网</div>
+          <div class="card-desc">最新狗血短剧资源</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://moontv.vime50.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/xx.png" alt=moontv">
+        </div>
+        <div class="card-info">
+          <div class="card-title">moontv</div>
+          <div class="card-desc">观影采集站</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://panku.app" target="_blank">
+        <div class="card-icon">
+          <img src="img/xx.png" alt=盘库吧">
+        </div>
+        <div class="card-info">
+          <div class="card-title">盘库吧</div>
+          <div class="card-desc">全网网盘资源在线搜索</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.916dm.fans" target="_blank">
+        <div class="card-icon">
+          <img src="img/xx.png" alt=樱花动漫">
+        </div>
+        <div class="card-info">
+          <div class="card-title">樱花动漫</div>
+          <div class="card-desc">动漫/电视剧/综艺网站</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.jumomo.fun" target="_blank">
+        <div class="card-icon">
+          <img src="img/xx.png" alt=剧馍馍">
+        </div>
+        <div class="card-info">
+          <div class="card-title">剧馍馍</div>
+          <div class="card-desc">电影/动漫/电视剧/综艺</div>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- 论坛资源分类 -->
+  <div class="section" data-category="论坛">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      论坛资源
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="https://xd.x6d.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/luntan.png" alt="小刀娱乐网">
+        </div>
+        <div class="card-info">
+          <div class="card-title">小刀娱乐网</div>
+          <div class="card-desc">活动/软件/教程资源分享</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://edu.52it.de" target="_blank">
+        <div class="card-icon">
+          <img src="img/edu.png" alt=学生免费资源">
+        </div>
+        <div class="card-info">
+          <div class="card-title">学生免费资源</div>
+          <div class="card-desc">教育邮箱优惠资源分享</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 服务器站分类 -->
+  <div class="section" data-category="服务器">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      服务器站
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="https://greencloudvps.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="绿云">
+        </div>
+        <div class="card-info">
+          <div class="card-title">绿云</div>
+          <div class="card-desc">jp自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://bwh89.net" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="搬瓦工">
+        </div>
+        <div class="card-info">
+          <div class="card-title">搬瓦工</div>
+          <div class="card-desc">us自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.dmit.io" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="Dmit">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Dmit</div>
+          <div class="card-desc">jp自建节点</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://app.rainyun.com" target="_blank">
+        <div class="card-icon">
+          <img src="img/vps.png" alt="雨云">
+        </div>
+        <div class="card-info">
+          <div class="card-title">雨云</div>
+          <div class="card-desc">文件/车队/转发机器人</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 美化网站分类 -->
+  <div class="section" data-category="美化">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      美化网站
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="https://yukonga.github.io/HQ-ICON/" target="_blank">
+        <div class="card-icon">
+          <img src="img/appstore.png" alt="HQ-Icon">
+        </div>
+        <div class="card-info">
+          <div class="card-title">HQ-Icon</div>
+          <div class="card-desc">获取appstore应用图标</div>
+        </div>
+      </a>
+      
+      <a class="card" href="https://favicon.im/zh/" target="_blank">
+        <div class="card-icon">
+          <img src="img/favicon.png" alt="Favicon">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Favicon</div>
+          <div class="card-desc">即时网站图标获取器</div>
+        </div>
+      </a>
+      
+      <a class="card" href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=24907" target="_blank">
+        <div class="card-icon">
+          <img src="img/iconfont.png" alt="iconfont">
+        </div>
+        <div class="card-info">
+          <div class="card-title">iconfont</div>
+          <div class="card-desc">阿里巴巴矢量图标库</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://icons8.com/icons/set/digital--style-plumpy" target="_blank">
+        <div class="card-icon">
+          <img src="img/icons8.png" alt="icons8">
+        </div>
+        <div class="card-info">
+          <div class="card-title">icons8</div>
+          <div class="card-desc">plumpy半透ui</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://zhutix.com/tag/tubiao/" target="_blank">
+        <div class="card-icon">
+          <img src="img/zmh.png" alt="致美化">
+        </div>
+        <div class="card-info">
+          <div class="card-title">致美化</div>
+          <div class="card-desc">视觉美化研究平台</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 开源项目分类 -->
+  <div class="section" data-category="开源">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      开源项目
+    </div>
+
+    <div class="card-grid">
+      <a class="card" href="https://github.com/iosrxwy/Telegrammask" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="Telegrammask">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Github</div>
+          <div class="card-desc">TG伪装计算器插件</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/NightwindDev/Tweak-Tutorial" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="Ios-Tweak">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Ios-Tweak</div>
+          <div class="card-desc">ios越狱插件开发教程</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/axiref/telegram-pwsbot" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="TG投稿BOT">
+        </div>
+        <div class="card-info">
+          <div class="card-title">TG投稿BOT</div>
+          <div class="card-desc">telegram投稿机器人</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/krau/SaveAny-Bot" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="SaveAny-Bot">
+        </div>
+        <div class="card-info">
+          <div class="card-title">SaveAny-Bot</div>
+          <div class="card-desc">TG资源转存机器人</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/wangwangit/SubsTracker" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="SubsTracker">
+        </div>
+        <div class="card-info">
+          <div class="card-title">SubsTracker</div>
+          <div class="card-desc">订阅管理与提醒系统</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/wangwangit/nav" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="nav">
+        </div>
+        <div class="card-info">
+          <div class="card-title">nav</div>
+          <div class="card-desc">书签收藏与分享导航站</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/wangwangit/short" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="short-link">
+        </div>
+        <div class="card-info">
+          <div class="card-title">short-link</div>
+          <div class="card-desc">长链缩短链加密服务</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/jinqians/VPSMonitorBot" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="vpsmonitorbot">
+        </div>
+        <div class="card-info">
+          <div class="card-title">vpsmonitorbot</div>
+          <div class="card-desc">VPS补货通知Bot</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/52Lxcloud/TGChatBot" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="TGchatbot">
+        </div>
+        <div class="card-info">
+          <div class="card-title">TGchatbot</div>
+          <div class="card-desc">TG消息转发分组bot</div>
+        </div>
+      </a>
+      
+      <a class="card" href="https://github.com/Eugeny/tabby/blob/master/README.zh-CN.md" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="Tabby">
+        </div>
+        <div class="card-info">
+          <div class="card-title">Tabby</div>
+          <div class="card-desc">SSH开源客户端</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/vastsa/FileCodeBox" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="FileCodeBox">
+        </div>
+        <div class="card-info">
+          <div class="card-title">FileCodeBox</div>
+          <div class="card-desc">匿名口令存取文件</div>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/senshinya/MoonTV" target="_blank">
+        <div class="card-icon">
+          <img src="img/github.png" alt="MoonTv">
+        </div>
+        <div class="card-info">
+          <div class="card-title">MoonTv</div>
+          <div class="card-desc">影视播放站</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 加密内容分类 -->
+  <div class="section" data-category="加密">
+    <div class="section-title">
+      <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
+      加密内容
+      <!-- 加锁按钮 -->
+      <img src="svg/jiami.svg" id="lock-icon" class="lock-icon" onclick="toggleLock()" alt="加锁" data-state="locked" />
+    </div>
+
+    <!-- 加锁内容区域（默认隐藏） -->
+    <div id="locked-category" style="display: none;">
+      <div class="card-grid">
+        <a class="card" href="https://cn.pornhub.com" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt="pornhub">
+          </div>
+          <div class="card-info">
+            <div class="card-title">pornhub</div>
+            <div class="card-desc">p站</div>
+          </div>
+        </a>
+
+        <a class="card" href="https://www.sehuatang.net" target="_blank">
+          <div class="card-icon">
+            <img src="img/xx.png" alt=色花堂">
+          </div>
+          <div class="card-info">
+            <div class="card-title">色花堂</div>
+            <div class="card-desc">论坛</div>
+          </div>
+        </a>
+
+        <a class="card" href="https://www.fanhaolou.com" target="_blank">
+          <div class="card-icon">
+              <img src="img/xx.png" alt=番号楼">
+          </div>
+          <div class="card-info">
+            <div class="card-title">番号楼</div>
+            <div class="card-desc">没有找不到的番号</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
   <!-- 固定右侧按钮 -->
   <div class="fixed-buttons">
     <!-- 返回顶部按钮 -->
@@ -1139,26 +1122,26 @@
         <img src="svg/dingduan.svg" alt="返回顶部" width="24" height="24" />
       </div>
     </button>
-
+    
     <!-- 切换模式按钮 -->
     <button class="toggle-mode-button" onclick="toggleMode()">
       <div class="icon-container">
         <img id="themeIcon" src="svg/mingliang.svg" alt="切换模式">
       </div>
     </button>
-  </div>
-  
-  <footer>
+    </div>
+    
+    <footer>
     <div class="footer-icons">
       <a href="https://github.com/mengnanen" target="_blank"><img src="svg/github.svg" alt="GitHub"></a>
       <a href="https://t.me/youwudailybot" target="_blank"><img src="svg/telegram.svg" alt="Telegram"></a>
     </div>
-
+    
     <div class="footer-copy">
       Copyright © 2025 wangxiaoer. All rights reserved. Made with Love.
     </div>
   </footer>
-
+  
   <!-- 自定义密码输入弹窗 -->
   <div id="password-modal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-box">
@@ -1169,170 +1152,121 @@
         <button onclick="submitPassword()">确认</button>
       </div>
     </div>
-  </div>
-</div>
-  
-  <script>
-    const tabButtons = document.querySelectorAll(".tab");
-    const tabIndicator = document.getElementById("tabIndicator");
-    const sectionWrapper = document.getElementById("sectionWrapper");
-    const searchInput = document.getElementById("search-input");
-
-    let currentIndex = 0;
-
-    // 标签按钮点击切换
-    tabButtons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        const category = button.dataset.category;
+    </div>
     
-        if (category === "all") {
-          // “全部”标签逻辑：不滑动页面，显示所有 section
-          document.querySelectorAll(".section").forEach(sec => sec.style.display = "block");
-          sectionWrapper.scrollTo({ left: 0, behavior: "smooth" });
-          currentIndex = 0;
-          updateActiveTab(index);
-        } else {
-          // 其他标签：只显示一个 section，并滑动
-          document.querySelectorAll(".section").forEach(sec => {
-            if (sec.dataset.category === category) {
-              sec.style.display = "block";
-            } else {
-              sec.style.display = "none";
-            }
-          });
-
-          currentIndex = parseInt(button.dataset.index);
-          updateActiveTab(index);
-          scrollToSection(currentIndex);
-        }
-      });
-    });
-
-    // 横线移动函数
-    function updateActiveTab(index) {
-      tabButtons.forEach(btn => btn.classList.remove("active"));
-      tabButtons[index].classList.add("active");
-
-      const activeButton = tabButtons[index];
-      const offsetLeft = activeButton.offsetLeft + activeButton.offsetWidth / 2 - 15;
-      tabIndicator.style.transform = `translateX(${offsetLeft}px)`;
-    }
-
-    // 页面滑动到对应区域
-    function scrollToSection(index) {
-      const width = sectionWrapper.offsetWidth;
-      sectionWrapper.scrollTo({ left: width * index, behavior: 'smooth' });
-    }
-
-    // 滑动时同步标签指示器
-    sectionWrapper.addEventListener("scroll", () => {
-      const scrollLeft = sectionWrapper.scrollLeft;
-      const width = sectionWrapper.offsetWidth;
-      const index = Math.round(scrollLeft / width);
-      if (index !== currentIndex) {
-        currentIndex = index;
-        updateActiveTab(index);
-      }
-    });
-
-    // 页面初始指示器对齐 + 默认显示第一个 section（常用）
-    window.addEventListener("load", () => {
-      updateActiveTab(0); // 指示器移动到第一个 tab（全部）
-
-      // 默认只显示 data-index="1" 的 section（常用）
-      document.querySelectorAll(".section").forEach(sec => {
-        if (sec.dataset.index === "1") {
-          sec.style.display = "block";
-        } else {
-          sec.style.display = "none";
-        }
-      });
-    });
-
-    // 搜索过滤（只当前页）
-    searchInput.addEventListener("input", () => {
-      const keyword = searchInput.value.trim().toLowerCase();
-      const currentSection = document.querySelector(`.section[data-index="${currentIndex}"]`);
-      const cards = currentSection.querySelectorAll(".card");
-
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(keyword) ? "block" : "none";
-      });
-    });
-
-    // 页面初始指示器对齐
-    window.addEventListener("load", () => updateActiveTab(0));
+    <script>
+    // 当前激活分类，默认为 "all"
+    let currentCategory = "all";
     
-    // 返回顶部按钮
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 切换模式：在明亮模式和暗黑模式之间切换
-    function toggleMode() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
+    // 给所有标签按钮绑定点击事件
+    document.querySelectorAll(".tab").forEach(button => {
+        button.addEventListener("click", () => {
+            // 清除所有标签的激活样式
+            document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+            
+            // 当前点击的标签添加激活样式
+            button.classList.add("active");
+    
+            // 记录当前激活的分类
+            currentCategory = button.dataset.category;
+    
+            // 执行过滤逻辑
+            filterSections();
+        });
+    });
+    
+    // 搜索框输入监听，输入内容时也触发过滤
+    document.getElementById("search-input").addEventListener("input", filterSections);
+        
+        // 分类和关键词过滤函数
+        function filterSections() {
+        // 获取搜索关键词，转小写去空格
+        const keyword = document.getElementById("search-input").value.trim().toLowerCase();
+        
+        // 获取所有分类模块
+        const sections = document.querySelectorAll(".section");
+            
+            // 遍历每个模块，判断是否显示
+            sections.forEach(section => {
+            const sectionCategory = section.dataset.category || "all"; // 每个模块应设置 data-category
+            const matchCategory = (currentCategory === "all" || sectionCategory === currentCategory); // 判断是否属于当前分类
+            const text = section.innerText.toLowerCase(); // 获取整个模块文字内容
+            const matchKeyword = text.includes(keyword); // 判断是否包含搜索词
+            
+            // 同时满足分类和关键词匹配才显示
+            section.style.display = (matchCategory && matchKeyword) ? "block" : "none";
+        });
+        }
+        
+        // 返回顶部按钮
+        function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 切换模式：在明亮模式和暗黑模式之间切换
+        function toggleMode() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('themeIcon').src = 'svg/mingliang.svg'; // 切换为太阳图标
-      } else {
+        } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         document.getElementById('themeIcon').src = 'svg/anhei.svg'; // 切换为月亮图标
-      }
-    }
-
-    // 页面加载时根据系统设置自动切换
-    window.addEventListener('load', () => {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      if (mediaQuery.matches) {
+        }
+        }
+        
+        // 页面加载时根据系统设置自动切换
+        window.addEventListener('load', () => {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mediaQuery.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
         document.getElementById('themeIcon').src = 'svg/anhei.svg'; // 默认月亮图标
-      } else {
+        } else {
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('themeIcon').src = 'svg/mingliang.svg'; // 默认太阳图标
-      }
-    });
-
-    // 切换锁状态
-    function toggleLock() {
+        }
+        });
+        
+        // 切换锁状态
+        function toggleLock() {
         const icon = document.getElementById("lock-icon");
         const state = icon.getAttribute("data-state");
-
+        
         if (state === "locked") {
             // 如果当前是锁状态，弹出输入框
             document.getElementById("password-modal").style.display = "flex";
-        } else {
+            } else {
             // 当前已解锁，再点击即上锁
             icon.setAttribute("src", "svg/jiami.svg");  // 换回锁图
             icon.setAttribute("data-state", "locked");
             document.getElementById("locked-category").style.display = "none";
         }
-    }
-
-    // 确认密码
-    function submitPassword() {
+        }
+        
+        // 确认密码
+        function submitPassword() {
         const input = document.getElementById("category-password").value;
         const icon = document.getElementById("lock-icon");
-
+        
         if (input === "808206") {
             document.getElementById("locked-category").style.display = "block";
             icon.setAttribute("src", "svg/jiemi.svg");   // 换成解锁图标
             icon.setAttribute("data-state", "unlocked");
             hideModal();
             alert("✅ 你小子居然知道密码！");
-        } else {
+            } else {
             alert("❌ 你小子不要动歪心思！");
         }
-    }
-    
-    // 隐藏弹窗
-    function hideModal() {
+        }
+        
+        // 隐藏弹窗
+        function hideModal() {
         document.getElementById("password-modal").style.display = "none";
         document.getElementById("category-password").value = "";
-    }
-
-    // 点击遮罩层关闭弹窗
-    function closeModal(e) {
+        }
+        
+        // 点击遮罩层关闭弹窗
+        function closeModal(e) {
         if (e.target.id === "password-modal") {
             hideModal();
         }
