@@ -1291,8 +1291,8 @@
             alert("请输入有效名称和 https:// 开头的网址！");
             return;
         }
-    
-        const section = document.querySelector(`.section[data-category="${category}"]`);
+
+        const container = document.querySelector(`.section[data-category="${category}"] .card-container`);
         if (!section) {
             alert("对应分类未找到，请刷新页面");
             return;
