@@ -1252,6 +1252,7 @@
       <h2>添加新链接</h2>
       <input type="text" id="newName" placeholder="请输入网站名称" />
       <input type="url" id="newURL" placeholder="请输入网址（必须 https://）" />
+      <input type="text" id="newDesc" placeholder="请输入网站描述（可选）" />
       <select id="newCategory">
         <option value="common">常用</option>
         <option value="useful">实用</option>
@@ -1283,6 +1284,7 @@
     function addNewLink() {
         const name = document.getElementById("newName").value.trim();
         const url = document.getElementById("newURL").value.trim();
+        const desc = document.getElementById("newDesc").value.trim();
         const category = document.getElementById("newCategory").value;
     
         if (!name || !url.startsWith("https://")) {
@@ -1315,6 +1317,7 @@
         // 清空输入并关闭弹窗
         document.getElementById("newName").value = "";
         document.getElementById("newURL").value = "";
+        document.getElementById("newDesc").value = "";      
         document.getElementById("addModal").style.display = "none";
     }
      
