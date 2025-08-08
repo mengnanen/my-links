@@ -1301,33 +1301,35 @@
             alert("请输入有效名称和 https:// 开头的网址！");
             return;
         }
-
-        const container = document.querySelector(`.section[data-category="${category}"] .card-container`);
-        if (!section) {
+    
+        // 获取对应分类下的 .card-grid（即放卡片的地方）
+        const container = document.querySelector(`.section[data-category="${category}"] .card-container .card-grid`);
+        if (!container) {
             alert("对应分类未找到，请刷新页面");
             return;
         }
     
         // 创建卡片元素结构
-        const card = document.createElement("div");
+        const card = document.createElement("a");
         card.className = "card";
+        card.href = url;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
         card.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon">🌐</div>
-            <div class="card-content">
-              <div class="card-title">${name}</div>
-              <div class="card-desc">${url.replace(/^https?:\/\//, "")}</div>
-            </div>
-          </a>
+          <div class="card-icon">🌐</div>
+          <div class="card-info">
+            <div class="card-title">${name}</div>
+            <div class="card-desc">${desc || url.replace(/^https?:\/\//, "")}</div>
+          </div>
         `;
     
-        // 插入到该分类模块
-        section.querySelector(".card-container")?.appendChild(card);
+        // 插入新卡片
+        container.appendChild(card);
     
         // 清空输入并关闭弹窗
         document.getElementById("newName").value = "";
         document.getElementById("newURL").value = "";
-        document.getElementById("newDesc").value = "";      
+        document.getElementById("newDesc").value = "";
         document.getElementById("addModal").style.display = "none";
     }
      
