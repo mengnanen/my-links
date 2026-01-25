@@ -259,6 +259,31 @@
       fill: #aaa;
     }
 
+    /* 展开/收起图标样式 */
+    .toggle-icon {
+      width: 18px;
+      height: 18px;
+      margin-left: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-icon:hover {
+      opacity: 0.7;
+    }
+
+    /* 卡片容器默认隐藏 */
+    .card-container {
+      display: none;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* 展开状态 */
+    .card-container.expanded {
+      display: block;
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -663,6 +688,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       自建项目
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">
@@ -747,6 +774,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       常用工具
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">
@@ -991,6 +1020,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       学习工具
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">
@@ -1048,6 +1079,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       虚拟U卡
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">
@@ -1143,6 +1176,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       实用网站
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">
@@ -1298,6 +1333,9 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       影视网站
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
+    </div>
     </div>
 
     <div class="card-container">
@@ -1371,6 +1409,9 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       论坛资源
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
+    </div>
     </div>
 
     <div class="card-container">
@@ -1416,6 +1457,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       服务器站
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">    
@@ -1468,6 +1511,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       美化网站
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">    
@@ -1530,6 +1575,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       开源项目
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">    
@@ -2026,6 +2073,8 @@
     <div class="section-title">
       <img src="svg/biaoqian.svg" alt="标签" width="20" height="20" style="margin-right: 6px; vertical-align: middle;">
       机器人项目
+      <!-- 展开/收起图标 -->
+      <img src="svg/zhankai.svg" class="toggle-icon" onclick="toggleSection(this)" alt="展开" data-state="collapsed" />
     </div>
 
     <div class="card-container">    
@@ -2451,8 +2500,30 @@
         if (e.target.id === "password-modal") {
             hideModal();
         }
+        }
+
+        // 展开/收起分类内容
+        function toggleSection(icon) {
+            const section = icon.closest('.section');
+            const container = section.querySelector('.card-container');
+            const state = icon.getAttribute('data-state');
+            
+            if (state === 'collapsed') {
+                // 展开
+                container.classList.add('expanded');
+                icon.setAttribute('src', 'svg/shouqi.svg');
+                icon.setAttribute('alt', '收起');
+                icon.setAttribute('data-state', 'expanded');
+            } else {
+                // 收起
+                container.classList.remove('expanded');
+                icon.setAttribute('src', 'svg/zhankai.svg');
+                icon.setAttribute('alt', '展开');
+                icon.setAttribute('data-state', 'collapsed');
+            }
     }
   </script>
 
 </body>
 </html>
+
