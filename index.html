@@ -200,25 +200,48 @@
     /* 搜索框外层容器 */
     .search-bar {
         margin-bottom: 20px;        /* 与下方内容的间距 */
+        max-width: 600px;           /* 限制最大宽度 */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* 搜索框输入框样式 */
     .search-bar input {
         width: 100%;                /* 宽度铺满父容器 */
-        padding: 10px 14px;         /* 内边距：上下10px，左右14px */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 添加轻微阴影，制造卡片浮起感 */
+        padding: 14px 20px 14px 45px; /* 内边距：上 右 下 左（左侧留空放图标）*/
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微阴影 */
         font-size: 15px;            /* 字体大小 */
-        border: 1px solid #ccc;     /* 边框颜色 */
-        border-radius: 8px;         /* 圆角 */
+        border: 2px solid transparent; /* 透明边框，用于 focus 效果 */
+        border-radius: 24px;        /* 更大的圆角，胶囊形状 */
         outline: none;              /* 聚焦时不显示外轮廓线 */
         box-sizing: border-box;     /* 包含内边距和边框 */
+        background-color: #ffffff;
+        transition: all 0.3s ease;  /* 平滑过渡效果 */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+        background-repeat: no-repeat;
+        background-position: 15px center;
+        background-size: 20px 20px;
+    }
+
+    /* 搜索框聚焦效果 */
+    .search-bar input:focus {
+        border-color: #007bff;      /* 聚焦时显示蓝色边框 */
+        box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2); /* 蓝色阴影 */
+        transform: translateY(-2px); /* 轻微上移 */
     }
 
     /* 暗黑模式下的搜索框输入框 */
     [data-theme='dark'] .search-bar input {
-      background-color: #1f1f1f;
+      background-color: #2a2a2a;
       color: #eee;
-      border: 1px solid #444;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+    }
+
+    /* 暗黑模式下搜索框聚焦效果 */
+    [data-theme='dark'] .search-bar input:focus {
+      border-color: #3399ff;
+      box-shadow: 0 4px 16px rgba(51, 153, 255, 0.3);
     }
 
     /* 暗黑模式下搜索框提示文字 */
@@ -681,7 +704,7 @@
 
   <!-- 搜索框 -->
   <div class="search-bar">
-    <input type="text" id="search-input" placeholder="🔍 搜索你感兴趣的网站..." oninput="filterCards()">
+    <input type="text" id="search-input" placeholder="搜索你感兴趣的网站..." oninput="filterCards()">
   </div>
 
   <!-- 自建项目分类 -->
