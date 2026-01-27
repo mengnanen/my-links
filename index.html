@@ -106,13 +106,13 @@
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
         overflow-x: auto;           /* 横向滚动条 */
         max-width: 100%;            /* 标签容器宽度 */
-        padding: 8px;               /* 内边距 */
+        padding: 6px;               /* 内边距 - 降低高度 */
         gap: 4px;                   /* 按钮之间的间距 */
         margin: 0 auto 20px;        /* 居中显示 + 与下方间距 */
         -ms-overflow-style: none;   /* 隐藏滚动条样式-IE/Edge */
         scrollbar-width: none;      /* 隐藏滚动条样式-Firefox */
-        background-color: #e0e0e0;  /* 底框背景色 - 加深 */
-        border-radius: 16px;        /* 圆角底框 */
+        background-color: #ebebeb;  /* 底框背景色 - 中等灰度 */
+        border-radius: 14px;        /* 圆角底框 - 稍微调小 */
         position: relative;         /* 相对定位，用于滑动指示器 */
         --indicator-left: 0px;      /* CSS变量：指示器左侧位置 */
         --indicator-width: 0px;     /* CSS变量：指示器宽度 */
@@ -122,14 +122,14 @@
 
     /* 暗黑模式下的标签容器底框 */
     [data-theme='dark'] .category-tabs {
-      background-color: #2a2a2a;  /* 暗黑模式也加深 */
+      background-color: #252525;  /* 暗黑模式中等深度 */
     }
 
     /* 每个标签按钮样式 */
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
-        padding: 8px 16px;          /* 内边距：上下8px，左右16px */
-        border-radius: 12px;        /* 圆角 */
+        padding: 7px 14px;          /* 内边距：上下7px，左右14px - 降低高度 */
+        border-radius: 10px;        /* 圆角 - 稍微调小 */
         border: none;               /* 去掉边框 */
         background-color: transparent; /* 默认透明背景 */
         color: #666;                /* 文字颜色 */
@@ -139,6 +139,8 @@
         transition: color 0.3s ease; /* 文字颜色平滑过渡 */
         position: relative;         /* 相对定位 */
         z-index: 2;                 /* 确保文字在指示器上方 */
+        -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+        user-select: none;          /* 防止文字被选中 */
     }
 
     /* 暗黑模式下的未激活标签按钮 */
@@ -166,7 +168,7 @@
         width: var(--indicator-width);    /* 使用CSS变量 */
         height: var(--indicator-height);  /* 使用CSS变量 */
         background-color: #ffffff;  /* 指示器背景色 */
-        border-radius: 12px;        /* 圆角 */
+        border-radius: 10px;        /* 圆角 - 匹配按钮 */
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡动画 */
         z-index: 1;                 /* 在按钮下方 */
