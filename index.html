@@ -112,7 +112,7 @@
         -ms-overflow-style: none;   /* 隐藏滚动条样式-IE/Edge */
         scrollbar-width: none;      /* 隐藏滚动条样式-Firefox */
         background-color: #ebebeb;  /* 底框背景色 - 中等灰度 */
-        border-radius: 14px;        /* 圆角底框 - 稍微调小 */
+        border-radius: 20px;        /* 底框圆角 - 加大圆角 */
         position: relative;         /* 相对定位，用于滑动指示器 */
         --indicator-left: 0px;      /* CSS变量：指示器左侧位置 */
         --indicator-width: 0px;     /* CSS变量：指示器宽度 */
@@ -129,7 +129,7 @@
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
         padding: 7px 14px;          /* 内边距：上下7px，左右14px - 降低高度 */
-        border-radius: 10px;        /* 圆角 - 稍微调小 */
+        border-radius: 14px;        /* 按钮圆角 - 加大圆角 */
         border: none;               /* 去掉边框 */
         background-color: transparent; /* 默认透明背景 */
         color: #666;                /* 文字颜色 */
@@ -168,7 +168,7 @@
         width: var(--indicator-width);    /* 使用CSS变量 */
         height: var(--indicator-height);  /* 使用CSS变量 */
         background-color: #ffffff;  /* 指示器背景色 */
-        border-radius: 10px;        /* 圆角 - 匹配按钮 */
+        border-radius: 14px;        /* 选择框圆角 - 加大圆角 */
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡动画 */
         z-index: 1;                 /* 在按钮下方 */
