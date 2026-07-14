@@ -101,7 +101,9 @@
         display: flex;              /* 水平排列 */
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
         overflow-x: auto;           /* 横向滚动条 */
-        max-width: 100%;            /* 标签容器宽度 */
+        width: max-content;         /* 宽度跟随全部标签内容 */
+        max-width: 100%;            /* 窄屏时不超出页面 */
+        box-sizing: border-box;     /* 最大宽度包含内边距 */
         padding: 5px;               /* 内边距 */
         gap: 4px;                   /* 按钮之间的间距 */
         margin: 0 auto 20px;        /* 居中显示 + 与下方间距 */
