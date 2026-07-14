@@ -1,0 +1,715 @@
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f2f3f5;
+      margin: 0;
+      padding: 30px 20px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* 网站主标题参数 */
+    h1 {
+      text-align: center;
+      font-size: 2.4em;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    /* 暗黑模式下网站主标题参数 */
+    [data-theme='dark'] h1 {
+      color: #eee; /* 更亮的白色字体 */
+    }
+
+    /* 添加链接按钮（右上角） */
+    .add-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 22px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    /* 添加链接弹窗整体遮罩 */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    
+    /* 添加链接弹窗框内容样式 */
+    .modal-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    /* 输入框、下拉选择框统一样式 */
+    .modal-content input,
+    .modal-content select {
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        outline: none;
+    }
+    
+    /* 提交按钮样式 */
+    .modal-content button {
+        padding: 10px;
+        font-size: 15px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    
+    /* 暗黑模式支持 */
+    @media (prefers-color-scheme: dark) {
+        .modal-content {
+            background: #1e1e1e;
+            color: #fff;
+        }
+        .modal-content input,
+        .modal-content select {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+        .modal-content button {
+            background: #444;
+        }
+    }
+    
+    /* 标签按钮容器整体样式 */
+    .category-tabs {
+        display: flex;              /* 水平排列 */
+        flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
+        overflow-x: auto;           /* 横向滚动条 */
+        max-width: 100%;            /* 标签容器宽度 */
+        padding: 5px;               /* 内边距 */
+        gap: 4px;                   /* 按钮之间的间距 */
+        margin: 0 auto 20px;        /* 居中显示 + 与下方间距 */
+        -ms-overflow-style: none;   /* 隐藏滚动条样式-IE/Edge */
+        scrollbar-width: none;      /* 隐藏滚动条样式-Firefox */
+        background-color: #ebebeb;  /* 底框背景色 - 中等灰度 */
+        border-radius: 24px;        /* 底框圆角 - 与搜索框一致 */
+        position: relative;         /* 相对定位，用于滑动指示器 */
+        --indicator-left: 0px;      /* CSS变量：指示器左侧位置 */
+        --indicator-width: 0px;     /* CSS变量：指示器宽度 */
+        --indicator-height: 0px;    /* CSS变量：指示器高度 */
+        --indicator-top: 0px;       /* CSS变量：指示器顶部位置 */
+    }
+
+    /* 暗黑模式下的标签容器底框 */
+    [data-theme='dark'] .category-tabs {
+      background-color: #252525;  /* 暗黑模式中等深度 */
+    }
+
+    /* 每个标签按钮样式 */
+    .category-tabs .tab {
+        flex-shrink: 0;             /* 防止按钮被压缩 */
+        padding: 7px 14px;          /* 内边距：上下7px，左右14px - 再调高一点 */
+        border-radius: 14px;        /* 按钮圆角 - 加大圆角 */
+        border: none;               /* 去掉边框 */
+        background-color: transparent; /* 默认透明背景 */
+        color: #666;                /* 文字颜色 */
+        font-size: 14px;            /* 字体大小 */
+        font-weight: 500;           /* 字体粗细 */
+        cursor: pointer;            /* 鼠标悬停时显示为可点击 */
+        transition: color 0.3s ease; /* 文字颜色平滑过渡 */
+        position: relative;         /* 相对定位 */
+        z-index: 2;                 /* 确保文字在指示器上方 */
+        -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+        user-select: none;          /* 防止文字被选中 */
+    }
+
+    /* 暗黑模式下的未激活标签按钮 */
+    [data-theme='dark'] .category-tabs .tab {
+      color: #999;
+    }
+
+    /* 被激活（选中）的标签按钮样式 */
+    .category-tabs .tab.active {
+        color: #333;                /* 选中时的文字颜色 */
+        font-weight: 600;           /* 选中时字体加粗 */
+    }
+
+    /* 暗黑模式下被激活（选中）的标签按钮 */
+    [data-theme='dark'] .category-tabs .tab.active {
+      color: #fff;
+    }
+
+    /* 滑动指示器（选择框） */
+    .category-tabs::before {
+        content: "";
+        position: absolute;
+        left: var(--indicator-left);      /* 使用CSS变量 */
+        top: var(--indicator-top);        /* 使用CSS变量 */
+        width: var(--indicator-width);    /* 使用CSS变量 */
+        height: var(--indicator-height);  /* 使用CSS变量 */
+        background-color: #ffffff;  /* 指示器背景色 */
+        border-radius: 18px;        /* 选择框圆角 - 加大圆角 */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡动画 */
+        z-index: 1;                 /* 在按钮下方 */
+    }
+
+    /* 暗黑模式下的滑动指示器 */
+    [data-theme='dark'] .category-tabs::before {
+      background-color: #484848;  /* 更明显的亮灰色 */
+      box-shadow: 0 2px 12px rgba(255, 255, 255, 0.2); /* 进一步增强阴影 */
+    }
+
+    /* 移除原有的下划线样式 */
+    .category-tabs .tab.active::after {
+        display: none;
+    }
+    
+    /* 滚动条整体容器 */
+    .category-tabs::-webkit-scrollbar {
+        height: 6px; /* 横向滚动条高度 */
+        display: none; /* 隐藏滚动条样式-Chrome/Safari */
+    }
+
+    /* 滚动条轨道 */
+    .category-tabs::-webkit-scrollbar-track {
+        background: transparent; /* 设置为透明轨道（不显示灰底） */
+    }
+
+    /* 滚动条滑块 */
+    .category-tabs::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.3); /* 滑块颜色（浅灰） */
+        border-radius: 6px;
+        width: 40px;  /* 无效，横向需控制“最小宽度” */
+        min-width: 40px;  /* 设置滑块的最小长度 */
+    }
+
+    /* 鼠标悬停时滑块颜色变化 */
+    .category-tabs::-webkit-scrollbar-thumb:hover {
+        background-color: #999; /* 更深灰色 */
+    }
+
+    /* 暗黑模式滚动条滑块 */
+    [data-theme='dark'] .category-tabs::-webkit-scrollbar-thumb {
+        background: #aaa;
+
+    }
+
+    /* 暗黑模式鼠标悬停时滑块颜色变化 */
+    [data-theme="dark"] .category-tabs::-webkit-scrollbar-thumb:hover {
+        background-color: #ccc;
+    }
+ 
+    /* 搜索框外层容器 */
+    .search-bar {
+        margin-bottom: 20px;        /* 与下方内容的间距 */
+        max-width: 100%;            /* 与标签容器宽度一致 */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 搜索框输入框样式 */
+    .search-bar input {
+        width: 100%;                /* 宽度铺满父容器 */
+        padding: 10px 20px 10px 45px; /* 内边距：上 右 下 左（左侧留空放图标）*/
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微阴影 */
+        font-size: 15px;            /* 字体大小 */
+        border: 2px solid transparent; /* 透明边框，用于 focus 效果 */
+        border-radius: 24px;        /* 更大的圆角，胶囊形状 */
+        outline: none;              /* 聚焦时不显示外轮廓线 */
+        box-sizing: border-box;     /* 包含内边距和边框 */
+        background-color: #ffffff;
+        transition: all 0.3s ease;  /* 平滑过渡效果 */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+        background-repeat: no-repeat;
+        background-position: 15px center;
+        background-size: 20px 20px;
+    }
+
+    /* 搜索框聚焦效果 */
+    .search-bar input:focus {
+        border-color: #007bff;      /* 聚焦时显示蓝色边框 */
+        box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2); /* 蓝色阴影 */
+        transform: translateY(-2px); /* 轻微上移 */
+    }
+
+    /* 暗黑模式下的搜索框输入框 */
+    [data-theme='dark'] .search-bar input {
+      background-color: #2a2a2a;
+      color: #eee;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+    }
+
+    /* 暗黑模式下搜索框聚焦效果 */
+    [data-theme='dark'] .search-bar input:focus {
+      border-color: #3399ff;
+      box-shadow: 0 4px 16px rgba(51, 153, 255, 0.3);
+    }
+
+    /* 暗黑模式下搜索框提示文字 */
+    [data-theme='dark'] .search-bar input::placeholder {
+      color: #888;
+    }
+
+    /* 分类整体模块与下一个模块之间的间距 */
+    .section {
+      margin-bottom: 25px;
+    }
+
+    /* 分类标题参数 */
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 15px;/* 分类标题与卡片之间的间距 */
+      color: #333;
+    }
+
+    .category-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .section-action {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 6px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    /* 暗黑模式下分类标题参数 */
+    [data-theme='dark'] .section-title {
+      color: #ddd; /* 提升分类标题颜色 */
+    }
+
+    /* 分类图标参数 */
+    .section-title svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      fill: #666;
+    }
+
+    /* 暗黑模式分类图标颜色 */
+    [data-theme='dark'] .section-title svg {
+      fill: #aaa;
+    }
+
+    /* 展开/收起图标样式 */
+    .toggle-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+      opacity: 1;
+    }
+
+    .toggle-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* 卡片容器默认显示 */
+    .card-container {
+      display: block;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* 收起状态 */
+    .card-container.collapsed {
+      display: none;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* 卡片样式：设置固定高度和固定宽度 */
+    .card {
+      display: flex; /* 使用 Flex 布局让图标和文字水平排列 */
+      align-items: center; /* 垂直方向居中对齐图标和文字 */
+      background: #ffffff; /* 背景颜色为纯白 */
+      border-radius: 14px; /* 设置圆角边框，提升视觉美观 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
+      text-decoration: none; /* 移除链接下划线 */
+      color: inherit;  /* 文字颜色继承外部设置，保持一致性 */
+      padding: 5px 12px 5px 14px; /* 内边距：上右下左，左边多一点让图标靠近左侧边缘 */
+      transition: all 0.2s ease; /* 所有变化添加动画过渡，使交互更顺滑 */
+      height: 50px; /* 固定卡片高度 */
+      min-width: 150px; /* 固定宽度 */
+      margin-bottom: 4px; /* 卡片与下一个卡片之间的垂直距离 */
+    }
+
+    /* 暗黑模式卡片背景 */
+    [data-theme='dark'] .card {
+      background: #2a2a2a;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
+    }
+
+    /* 鼠标悬停时卡片微微上移 */
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    /* 左侧图标样式 */
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 6px; /* 左侧图标与右侧文字的间距 */
+      flex-shrink: 0;
+      border-radius: 50%;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 暗黑模式图标容器背景 */
+    [data-theme='dark'] .card-icon {
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
+    }
+
+    .card-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    /* 右侧文字信息的样式 */
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 2px; /* 文字区域向左靠近 */
+    }
+
+    /* 网站名称 */
+    .card-title {
+      font-weight: bold;
+      font-size: 0.9em;
+      margin-bottom: 3px;/* 标题与描述之间的间距 */
+    }
+
+    /* 卡片描述：单行显示超长文字用省略号 */
+    .card-desc {
+      font-size: 0.8em;
+      color: #666;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+
+    /* 暗黑模式描述文字 */
+    [data-theme='dark'] .card-desc {
+      color: #bbb;
+    }
+
+    /* 整体 footer 区域样式 */
+    footer {
+      margin-top: 60px; /* 与上方内容的间距 */
+      padding: 40px 20px 30px; /* 上内边距 40px，左右 20px，下 30px */
+      text-align: center; /* 所有内容居中对齐 */
+      font-size: 0.9em; /* 基础字体大小 */
+      color: #666; /* 默认字体颜色为深灰色 */
+    }
+
+    /* 圆形社交图标的外部容器 */
+    .footer-icons {
+      display: flex; /* 使用 Flex 布局水平排列图标 */
+      justify-content: center; /* 水平居中图标组 */
+      gap: 20px; /* 图标之间的间距 */
+      margin-bottom: 16px; /* 与下方版权信息的垂直间距 */
+    }
+
+    /* 每一个圆形社交按钮的容器样式 */
+    .footer-icons a {
+      width: 40px; /* 图标容器宽度 */
+      height: 40px; /* 图标容器高度 */
+      background-color: #ffffff; /* 默认背景色为浅灰色 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 明亮模式轻微阴影 */
+      border-radius: 50%; /* 设置为圆形 */
+      display: flex; /* 使用 Flex 居中图标 */
+      align-items: center; /* 垂直居中 */
+      justify-content: center; /* 水平居中 */
+      transition: all 0.3s ease; /* 平滑过渡效果 */
+      text-decoration: none; /* 去除链接下划线 */
+    }
+
+    /* 暗黑模式下的圆形社交按钮颜色 */
+    [data-theme='dark'] .footer-icons a {
+      background-color: #2a2a2a;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
+    }
+
+
+    /* 鼠标悬停时的按钮背景变浅 */
+    .footer-icons a:hover {
+      background-color: #e5e5e5; /* 悬停时变成稍浅的灰色 */
+    }
+
+    /* 图标本体的样式 */
+    .footer-icons img {
+      width: 26px; /* 图标显示尺寸 */
+      height: 26px;
+      object-fit: contain; /* 保持原图比例缩放显示 */
+    }
+
+    /* 暗黑模式 footer 图标亮一点 */
+    [data-theme='dark'] .footer-icons img {
+      filter: brightness(2);
+    }
+
+    /* 版权说明文本样式 */
+    .footer-copy {
+      font-size: 0.85em; /* 比正文略小 */
+      color: #999; /* 更浅灰色，用于低强调信息 */
+    }
+
+    /* 默认主题样式（明亮模式） */
+    :root {
+      --background-color: #f2f3f5;
+      --text-color: #222;
+    }
+
+    /* 暗黑模式样式 */
+    [data-theme='dark'] {
+      --background-color: #181818;
+      --text-color: #fff;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    /* 固定右侧按钮的容器样式 */
+    .fixed-buttons {
+      position: fixed;
+      top: 84%; /* 按钮距离顶端的间距 */
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* 按钮之间的垂直间距 */
+    }
+
+    /* 清除按钮默认样式，仅保留图标容器样式 */
+    .fixed-buttons button {
+      all: unset; /* 移除默认背景、边框、padding 等 */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 鼠标悬停时轻微透明，增强反馈感 */
+    .fixed-buttons button:hover {
+      opacity: 0.75;
+    }
+
+    /* 鼠标点击时微缩，提供点击动效 */
+    .fixed-buttons button:active {
+      transform: scale(0.8);
+    }
+
+    /* 图标容器样式：圆角、灰色背景、阴影、居中 */
+    .icon-container {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background-color: rgba(0, 0, 0, 0.08); /* 明亮模式默认背景 */
+      backdrop-filter: blur(4px); /* 加轻微模糊，现代美感 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微卡片阴影 */
+      box-sizing: border-box;
+    }
+
+    /* 鼠标悬停时图标容器背景略变深 */
+    .icon-container:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    /* 暗黑模式下图标容器背景颜色调整 */
+    [data-theme='dark'] .icon-container {
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* 暗黑模式轻微阴影 */
+    }
+
+    /* 暗黑模式下悬停时图标容器背景变亮 */
+    [data-theme='dark'] .icon-container:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* 图标样式：固定尺寸，无滤镜（保持原色） */
+    .icon-container img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: block;
+      margin: 0;
+      vertical-align: middle;
+    }
+
+    /* 加密类别锁的图标 */
+    .lock-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 0;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+      vertical-align: middle;
+    }
+
+    .lock-icon:hover {
+      opacity: 1;
+    }
+
+    /* 加密弹窗遮罩层 */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+        justify-content: center; /* 水平居中 */
+        align-items: center;     /* 垂直居中 */
+    }
+
+    /* 加密弹窗盒子 */
+    .modal-box {
+        background: #fff;
+        padding: 24px 20px 16px;
+        border-radius: 12px;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        box-sizing: border-box;
+    }
+
+    /* 加密弹窗暗黑模式适配 */
+    /* 加密弹窗盒子暗黑模式 */
+    [data-theme='dark'] .modal-box {
+        background: #1e1e1e;     /* 背景色：深灰色 */
+        color: #fff;             /* 文字颜色：白色 */
+    }
+
+    /* 输入框暗黑模式 */
+    [data-theme='dark'] .modal-box input {
+        background: #333;        /* 背景色：更深的灰 */
+        color: #fff;             /* 输入文字颜色：白色 */
+        border: 1px solid #555;  /* 边框颜色：中灰 */
+    }
+
+    /* 按钮暗黑模式未点击状态 */
+    [data-theme='dark'] .modal-box button {
+        background-color: #444;  /* 背景：深灰 */
+        color: #fff;             /* 文字：白色 */
+    }
+
+    /* 按钮暗黑模式悬停状态 */
+    [data-theme='dark'] .modal-box button:hover {
+        background-color: #666;  /* 悬停时背景：更浅的灰 */
+    }
+
+    /* 输入框样式 */
+    .modal-box input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 16px;
+        font-size: 1em;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    /* 底部按钮区域 */
+    .modal-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .modal-actions button {
+     flex: 1;
+      padding: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    /* 第一个按钮：取消（灰色） */
+    .modal-actions button:first-child {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .modal-actions button:first-child:hover {
+      background-color: #aaa;
+    }
+
+    /* 第二个按钮：确认（蓝色） */
+    .modal-actions button:last-child {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .modal-actions button:last-child:hover {
+      background-color: #0056b3;
+    }
+    
+    /* 手机端适配 */
+    @media (max-width: 600px) {
+      html {
+        font-size: 15px;
+      }
+      body {
+        padding: 20px 10px;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+    }
