@@ -34,12 +34,6 @@ window.SITE_CATEGORIES = [
         "icon": "img/xx.png",
         "name": "在线文字转语音",
         "description": "20+种音色"
-      },
-      {
-        "url": "https://steps.mengnan.xyz/",
-        "icon": "img/xx.png",
-        "name": "动动吧",
-        "description": "小米刷步"
       }
     ]
   },
