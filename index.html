@@ -6,14 +6,17 @@
   <meta name="description" content="王小二的个人网站收藏导航页">
   <title>王小二网站导航页</title>
   <link rel="icon" href="img/favicon.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260722-2">
   <script src="js/sites.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/app.js?v=20260722-2" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-brand">
-      <span class="terminal-mark" aria-hidden="true">&gt;_</span>
+      <svg class="terminal-mark" viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="4 17 10 11 4 5"></polyline>
+        <line x1="12" y1="19" x2="20" y2="19"></line>
+      </svg>
       <h1 class="site-title">王小二导航</h1>
     </div>
 
@@ -22,7 +25,16 @@
         <span id="greeting-text">你好</span>
         <span aria-hidden="true">👋</span>
       </div>
-      <time class="local-time" id="local-time">--:--:--</time>
+      <time class="local-time" id="local-time">
+        <span class="clock-digit" data-clock-index="0" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+        <span class="clock-digit" data-clock-index="1" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+        <span class="clock-separator" aria-hidden="true">:</span>
+        <span class="clock-digit" data-clock-index="2" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+        <span class="clock-digit" data-clock-index="3" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+        <span class="clock-separator" aria-hidden="true">:</span>
+        <span class="clock-digit" data-clock-index="4" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+        <span class="clock-digit" data-clock-index="5" aria-hidden="true"><span class="clock-digit-value">0</span></span>
+      </time>
     </div>
   </header>
 
