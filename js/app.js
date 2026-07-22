@@ -145,6 +145,7 @@ function selectCategory(button) {
   elements.tabs.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"));
   button.classList.add("active");
   state.currentCategory = button.dataset.category;
+  button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
   moveIndicator(button);
   filterCards();
 }
@@ -244,6 +245,51 @@ function submitPassword() {
   hidePasswordModal();
 }
 
+function bindTabDragging() {
+  let pointerId = null;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragged = false;
+
+  elements.tabs.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startScrollLeft = elements.tabs.scrollLeft;
+    dragged = false;
+  });
+
+  elements.tabs.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== pointerId) return;
+    const distance = event.clientX - startX;
+    if (Math.abs(distance) < 4 && !dragged) return;
+
+    dragged = true;
+    elements.tabs.classList.add("is-dragging");
+    elements.tabs.setPointerCapture(pointerId);
+    elements.tabs.scrollLeft = startScrollLeft - distance;
+  });
+
+  const stopDragging = (event) => {
+    if (event.pointerId !== pointerId) return;
+    pointerId = null;
+    elements.tabs.classList.remove("is-dragging");
+  };
+
+  elements.tabs.addEventListener("pointerup", stopDragging);
+  elements.tabs.addEventListener("pointercancel", stopDragging);
+  elements.tabs.addEventListener(
+    "click",
+    (event) => {
+      if (!dragged) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      dragged = false;
+    },
+    true,
+  );
+}
+
 function bindEvents() {
   elements.searchInput.addEventListener("input", filterCards);
   elements.scrollTopButton.addEventListener("click", () => {
@@ -262,8 +308,11 @@ function bindEvents() {
     if (event.key === "Escape") hidePasswordModal();
   });
   window.addEventListener("resize", () => {
-    moveIndicator(elements.tabs.querySelector(".tab.active"));
+    const activeTab = elements.tabs.querySelector(".tab.active");
+    activeTab?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    moveIndicator(activeTab);
   });
+  bindTabDragging();
 }
 
 function initialize() {
