@@ -6,6 +6,18 @@ window.SITE_CATEGORIES = [
     "locked": false,
     "links": [
       {
+        "url": "https://1panel.mengnan.xyz/mengnan",
+        "icon": "img/xx.png",
+        "name": "1panel",
+        "description": "服务器控制面板"
+      },
+      {
+        "url": "https://openlist.mengnan.xyz/",
+        "icon": "img/xx.png",
+        "name": "openlist",
+        "description": "网盘资源分享"
+      },
+      {
         "url": "https://blog.mengnan.xyz/",
         "icon": "img/xx.png",
         "name": "blog",
