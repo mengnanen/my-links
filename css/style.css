@@ -219,7 +219,7 @@
         scrollbar-width: none;      /* 隐藏滚动条样式-Firefox */
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
-        touch-action: pan-x;
+        touch-action: pan-x pan-y;
         overscroll-behavior-x: contain;
         background-color: #ebebeb;  /* 底框背景色 - 中等灰度 */
         border-radius: 24px;        /* 底框圆角 - 与搜索框一致 */
@@ -340,6 +340,8 @@
 
     /* 搜索框输入框样式 */
     .search-bar input {
+        -webkit-appearance: none;
+        appearance: none;
         width: var(--top-control-height);
         height: var(--top-control-height);
         padding: 0;
@@ -358,6 +360,14 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20px 20px;
+    }
+
+    /* 移除移动端浏览器附加的搜索图标，只保留自定义图标 */
+    .search-bar input::-webkit-search-decoration,
+    .search-bar input::-webkit-search-results-button,
+    .search-bar input::-webkit-search-results-decoration {
+        display: none;
+        -webkit-appearance: none;
     }
 
     .search-bar input::placeholder {
