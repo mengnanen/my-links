@@ -6,9 +6,9 @@
   <meta name="description" content="王小二的个人网站收藏导航页">
   <title>王小二网站导航页</title>
   <link rel="icon" href="img/favicon.png">
-  <link rel="stylesheet" href="css/style.css?v=20260722-4">
+  <link rel="stylesheet" href="css/style.css?v=20260722-5">
   <script src="js/sites.js" defer></script>
-  <script src="js/app.js?v=20260722-4" defer></script>
+  <script src="js/app.js?v=20260722-5" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -80,13 +80,30 @@
     </div>
   </footer>
 
-  <div id="password-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+  <div id="password-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="password-modal-title" aria-describedby="password-modal-description">
     <div class="modal-box">
-      <div class="modal-title" id="password-modal-title">🔒 输入密码查看加密内容</div>
-      <input type="password" id="category-password" placeholder="请输入密码" autocomplete="current-password">
+      <div class="modal-header">
+        <span class="modal-lock-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+        </span>
+        <div>
+          <h2 class="modal-title" id="password-modal-title">访问加密收藏</h2>
+          <p class="modal-description" id="password-modal-description">请输入密码以继续</p>
+        </div>
+      </div>
+
+      <label class="password-field">
+        <span class="visually-hidden">密码</span>
+        <input type="password" id="category-password" placeholder="输入密码" autocomplete="current-password" aria-describedby="password-error">
+      </label>
+      <p class="password-error" id="password-error" role="alert" hidden>密码不正确，请重新输入</p>
+
       <div class="modal-actions">
         <button id="cancel-password-button" type="button">取消</button>
-        <button id="submit-password-button" type="button">确认</button>
+        <button id="submit-password-button" type="button">解锁</button>
       </div>
     </div>
   </div>
