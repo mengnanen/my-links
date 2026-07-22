@@ -452,6 +452,7 @@
       height: 50px; /* 固定卡片高度 */
       min-width: 150px; /* 固定宽度 */
       margin-bottom: 4px; /* 卡片与下一个卡片之间的垂直距离 */
+      overflow: hidden;
     }
 
     /* 暗黑模式卡片背景 */
@@ -494,6 +495,8 @@
     /* 右侧文字信息的样式 */
     .card-info {
       display: flex;
+      flex: 1;
+      min-width: 0;
       flex-direction: column;
       justify-content: center;
       margin-left: 2px; /* 文字区域向左靠近 */
@@ -504,6 +507,10 @@
       font-weight: bold;
       font-size: 0.9em;
       margin-bottom: 3px;/* 标题与描述之间的间距 */
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* 卡片描述：单行显示超长文字用省略号 */
