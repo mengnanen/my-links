@@ -1,5 +1,11 @@
 const CATEGORY_PASSWORD = "971008";
 const DEFAULT_ICON = "img/favicon.png";
+const TIME_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hourCycle: "h23",
+});
 const CATEGORY_TAB_ORDER = [
   "自建",
   "常用",
@@ -21,6 +27,8 @@ const state = {
 };
 
 const elements = {
+  greetingText: document.getElementById("greeting-text"),
+  localTime: document.getElementById("local-time"),
   tabs: document.getElementById("category-tabs"),
   sections: document.getElementById("sections"),
   searchInput: document.getElementById("search-input"),
@@ -38,6 +46,22 @@ function createElement(tag, className, text) {
   if (className) element.className = className;
   if (text !== undefined) element.textContent = text;
   return element;
+}
+
+function getGreeting(hour) {
+  if (hour < 5) return "夜深了";
+  if (hour < 11) return "早上好";
+  if (hour < 14) return "中午好";
+  if (hour < 18) return "下午好";
+  if (hour < 23) return "晚上好";
+  return "夜深了";
+}
+
+function updateLocalTime() {
+  const now = new Date();
+  elements.greetingText.textContent = getGreeting(now.getHours());
+  elements.localTime.dateTime = now.toISOString();
+  elements.localTime.textContent = TIME_FORMATTER.format(now);
 }
 
 function createTab(category, label, active = false) {
@@ -322,6 +346,8 @@ function initialize() {
 
   const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   applyTheme(preferredTheme);
+  updateLocalTime();
+  window.setInterval(updateLocalTime, 1000);
   renderNavigation();
   bindEvents();
 }
