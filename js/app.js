@@ -32,6 +32,7 @@ const elements = {
   scrollTopButton: document.getElementById("scroll-top-button"),
   passwordModal: document.getElementById("password-modal"),
   passwordInput: document.getElementById("category-password"),
+  passwordError: document.getElementById("password-error"),
   cancelPasswordButton: document.getElementById("cancel-password-button"),
   submitPasswordButton: document.getElementById("submit-password-button"),
 };
@@ -248,18 +249,31 @@ function updateLockDisplay() {
 }
 
 function showPasswordModal() {
-  elements.passwordModal.style.display = "flex";
-  elements.passwordInput.focus();
+  clearPasswordError();
+  elements.passwordModal.classList.add("is-open");
+  requestAnimationFrame(() => elements.passwordInput.focus());
 }
 
 function hidePasswordModal() {
-  elements.passwordModal.style.display = "none";
+  elements.passwordModal.classList.remove("is-open");
   elements.passwordInput.value = "";
+  clearPasswordError();
+}
+
+function clearPasswordError() {
+  elements.passwordError.hidden = true;
+  elements.passwordInput.removeAttribute("aria-invalid");
+  elements.passwordModal.querySelector(".modal-box").classList.remove("is-error");
 }
 
 function submitPassword() {
   if (elements.passwordInput.value !== CATEGORY_PASSWORD) {
-    alert("密码不正确");
+    const modalBox = elements.passwordModal.querySelector(".modal-box");
+    elements.passwordError.hidden = false;
+    elements.passwordInput.setAttribute("aria-invalid", "true");
+    modalBox.classList.remove("is-error");
+    void modalBox.offsetWidth;
+    modalBox.classList.add("is-error");
     elements.passwordInput.select();
     return;
   }
@@ -325,6 +339,7 @@ function bindEvents() {
   elements.themeButton.addEventListener("click", toggleTheme);
   elements.cancelPasswordButton.addEventListener("click", hidePasswordModal);
   elements.submitPasswordButton.addEventListener("click", submitPassword);
+  elements.passwordInput.addEventListener("input", clearPasswordError);
   elements.passwordInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") submitPassword();
   });
