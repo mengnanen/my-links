@@ -11,7 +11,20 @@
   <script src="js/app.js" defer></script>
 </head>
 <body>
-  <h1>王小二网站导航页</h1>
+  <header class="site-header">
+    <div class="site-brand">
+      <span class="terminal-mark" aria-hidden="true">&gt;_</span>
+      <h1 class="site-title">王小二导航</h1>
+    </div>
+
+    <div class="site-status">
+      <div class="status-greeting">
+        <span id="greeting-text">你好</span>
+        <span aria-hidden="true">👋</span>
+      </div>
+      <time class="local-time" id="local-time">--:--:--</time>
+    </div>
+  </header>
 
   <!-- 后续接入数据库后，可重新启用添加链接按钮。 -->
   <!-- <button class="add-button" id="add-link-button" aria-label="添加链接">✏️</button> -->
