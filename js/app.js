@@ -130,39 +130,6 @@ function createSection(category) {
   const section = createElement("section", "section");
   section.dataset.category = category.category;
 
-  const title = createElement("div", "section-title");
-  const categoryIcon = createElement("img", "category-icon");
-  categoryIcon.src = "svg/biaoqian.svg";
-  categoryIcon.alt = "";
-  categoryIcon.width = 20;
-  categoryIcon.height = 20;
-  title.append(categoryIcon, document.createTextNode(category.title));
-
-  const action = createElement("button", "section-action");
-  action.type = "button";
-
-  if (category.locked) {
-    action.id = "lock-button";
-    action.setAttribute("aria-label", "解锁加密内容");
-    const lockIcon = createElement("img", "lock-icon");
-    lockIcon.id = "lock-icon";
-    lockIcon.src = "svg/jiami.svg";
-    lockIcon.alt = "";
-    lockIcon.dataset.state = "locked";
-    action.appendChild(lockIcon);
-    action.addEventListener("click", toggleLock);
-  } else {
-    action.setAttribute("aria-label", `收起${category.title}`);
-    const toggleIcon = createElement("img", "toggle-icon");
-    toggleIcon.src = "svg/shouqi.svg";
-    toggleIcon.alt = "";
-    toggleIcon.dataset.state = "expanded";
-    action.appendChild(toggleIcon);
-    action.addEventListener("click", () => toggleSection(action));
-  }
-
-  title.appendChild(action);
-
   const cardContainer = createElement("div", "card-container");
   if (category.locked) {
     cardContainer.id = "locked-category";
@@ -172,7 +139,7 @@ function createSection(category) {
   const grid = createElement("div", "card-grid");
   category.links.forEach((link) => grid.appendChild(createCard(link)));
   cardContainer.appendChild(grid);
-  section.append(title, cardContainer);
+  section.appendChild(cardContainer);
   return section;
 }
 
@@ -210,13 +177,27 @@ function scrollTabHorizontally(button, behavior = "smooth", center = false) {
   elements.tabs.scrollTo({ left: Math.max(0, targetLeft), behavior });
 }
 
-function selectCategory(button) {
+function activateCategory(button) {
+  if (state.currentCategory === "加密" && button.dataset.category !== "加密") {
+    state.encryptedUnlocked = false;
+    updateLockDisplay();
+  }
+
   elements.tabs.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"));
   button.classList.add("active");
   state.currentCategory = button.dataset.category;
   scrollTabHorizontally(button, "smooth", true);
   moveIndicator(button);
   filterCards();
+}
+
+function selectCategory(button) {
+  if (button.dataset.category === "加密" && !state.encryptedUnlocked) {
+    showPasswordModal();
+    return;
+  }
+
+  activateCategory(button);
 }
 
 function moveIndicator(activeButton) {
@@ -251,17 +232,6 @@ function filterCards() {
   });
 }
 
-function toggleSection(button) {
-  const container = button.closest(".section").querySelector(".card-container");
-  const icon = button.querySelector(".toggle-icon");
-  const isExpanded = icon.dataset.state === "expanded";
-
-  container.classList.toggle("collapsed", isExpanded);
-  icon.src = isExpanded ? "svg/zhankai.svg" : "svg/shouqi.svg";
-  icon.dataset.state = isExpanded ? "collapsed" : "expanded";
-  button.setAttribute("aria-label", `${isExpanded ? "展开" : "收起"}${button.closest(".section").dataset.category}`);
-}
-
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   elements.themeIcon.src = theme === "dark" ? "svg/anhei.svg" : "svg/mingliang.svg";
@@ -272,24 +242,9 @@ function toggleTheme() {
   applyTheme(nextTheme);
 }
 
-function toggleLock() {
-  if (!state.encryptedUnlocked) {
-    showPasswordModal();
-    return;
-  }
-
-  state.encryptedUnlocked = false;
-  updateLockDisplay();
-}
-
 function updateLockDisplay() {
   const container = document.getElementById("locked-category");
-  const icon = document.getElementById("lock-icon");
-  const button = document.getElementById("lock-button");
   container.hidden = !state.encryptedUnlocked;
-  icon.src = state.encryptedUnlocked ? "svg/jiemi.svg" : "svg/jiami.svg";
-  icon.dataset.state = state.encryptedUnlocked ? "unlocked" : "locked";
-  button.setAttribute("aria-label", state.encryptedUnlocked ? "锁定加密内容" : "解锁加密内容");
 }
 
 function showPasswordModal() {
@@ -312,6 +267,7 @@ function submitPassword() {
   state.encryptedUnlocked = true;
   updateLockDisplay();
   hidePasswordModal();
+  activateCategory(elements.tabs.querySelector('.tab[data-category="加密"]'));
 }
 
 function bindTabDragging() {
