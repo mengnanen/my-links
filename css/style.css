@@ -96,17 +96,31 @@
         }
     }
     
+    /* 顶部分类与搜索工具栏 */
+    .top-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: max-content;
+        max-width: 100%;
+        margin: 0 auto 20px;
+        --top-control-height: 42px;
+    }
+
     /* 标签按钮容器整体样式 */
     .category-tabs {
         display: flex;              /* 水平排列 */
+        flex: 1 1 auto;
         flex-wrap: nowrap;          /* 不换行，超出时可横向滚动 */
         overflow-x: auto;           /* 横向滚动条 */
         width: max-content;         /* 宽度跟随全部标签内容 */
-        max-width: 100%;            /* 窄屏时不超出页面 */
+        min-width: 0;
+        max-width: none;
+        height: var(--top-control-height);
         box-sizing: border-box;     /* 最大宽度包含内边距 */
         padding: 5px;               /* 内边距 */
         gap: 4px;                   /* 按钮之间的间距 */
-        margin: 0 auto 20px;        /* 居中显示 + 与下方间距 */
+        margin: 0;
         -ms-overflow-style: none;   /* 隐藏滚动条样式-IE/Edge */
         scrollbar-width: none;      /* 隐藏滚动条样式-Firefox */
         background-color: #ebebeb;  /* 底框背景色 - 中等灰度 */
@@ -126,8 +140,9 @@
     /* 每个标签按钮样式 */
     .category-tabs .tab {
         flex-shrink: 0;             /* 防止按钮被压缩 */
-        padding: 7px 14px;          /* 内边距：上下7px，左右14px - 再调高一点 */
-        border-radius: 14px;        /* 按钮圆角 - 加大圆角 */
+        height: 32px;
+        padding: 0 14px;
+        border-radius: 16px;
         border: none;               /* 去掉边框 */
         background-color: transparent; /* 默认透明背景 */
         color: #666;                /* 文字颜色 */
@@ -220,43 +235,68 @@
  
     /* 搜索框外层容器 */
     .search-bar {
-        margin-bottom: 20px;        /* 与下方内容的间距 */
-        max-width: 100%;            /* 与标签容器宽度一致 */
-        margin-left: auto;
-        margin-right: auto;
+        flex: 0 0 auto;
+        width: auto;
+        height: var(--top-control-height);
     }
 
     /* 搜索框输入框样式 */
     .search-bar input {
-        width: 100%;                /* 宽度铺满父容器 */
-        padding: 10px 20px 10px 45px; /* 内边距：上 右 下 左（左侧留空放图标）*/
+        width: var(--top-control-height);
+        height: var(--top-control-height);
+        padding: 0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 轻微阴影 */
         font-size: 15px;            /* 字体大小 */
         border: 2px solid transparent; /* 透明边框，用于 focus 效果 */
-        border-radius: 24px;        /* 更大的圆角，胶囊形状 */
+        border-radius: 50%;
         outline: none;              /* 聚焦时不显示外轮廓线 */
         box-sizing: border-box;     /* 包含内边距和边框 */
         background-color: #ffffff;
-        transition: all 0.3s ease;  /* 平滑过渡效果 */
+        color: transparent;
+        cursor: pointer;
+        transition: width 0.3s ease, padding 0.3s ease, border-radius 0.3s ease,
+                    background-position 0.3s ease, box-shadow 0.3s ease;
         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
         background-repeat: no-repeat;
-        background-position: 15px center;
+        background-position: center;
         background-size: 20px 20px;
+    }
+
+    .search-bar input::placeholder {
+        color: transparent;
+    }
+
+    /* 聚焦或已有搜索词时展开输入框 */
+    .search-bar input:focus,
+    .search-bar input:not(:placeholder-shown) {
+        width: min(260px, calc(100vw - 40px));
+        padding: 0 38px 0 43px;
+        border-radius: calc(var(--top-control-height) / 2);
+        background-position: 14px center;
+        color: #222;
+        cursor: text;
+    }
+
+    .search-bar input:focus::placeholder {
+        color: #888;
     }
 
     /* 搜索框聚焦效果 */
     .search-bar input:focus {
         border-color: #007bff;      /* 聚焦时显示蓝色边框 */
         box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2); /* 蓝色阴影 */
-        transform: translateY(-2px); /* 轻微上移 */
     }
 
     /* 暗黑模式下的搜索框输入框 */
     [data-theme='dark'] .search-bar input {
       background-color: #2a2a2a;
-      color: #eee;
       box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+    }
+
+    [data-theme='dark'] .search-bar input:focus,
+    [data-theme='dark'] .search-bar input:not(:placeholder-shown) {
+      color: #eee;
     }
 
     /* 暗黑模式下搜索框聚焦效果 */
@@ -266,7 +306,7 @@
     }
 
     /* 暗黑模式下搜索框提示文字 */
-    [data-theme='dark'] .search-bar input::placeholder {
+    [data-theme='dark'] .search-bar input:focus::placeholder {
       color: #888;
     }
 
@@ -709,6 +749,13 @@
       }
       body {
         padding: 20px 10px;
+      }
+      .top-controls {
+        width: 100%;
+      }
+      .search-bar input:focus,
+      .search-bar input:not(:placeholder-shown) {
+        width: min(200px, calc(100vw - 74px));
       }
       .card-grid {
         grid-template-columns: repeat(2, 1fr);
