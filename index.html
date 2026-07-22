@@ -16,10 +16,12 @@
   <!-- 后续接入数据库后，可重新启用添加链接按钮。 -->
   <!-- <button class="add-button" id="add-link-button" aria-label="添加链接">✏️</button> -->
 
-  <nav class="category-tabs" id="category-tabs" aria-label="网站分类"></nav>
+  <div class="top-controls">
+    <nav class="category-tabs" id="category-tabs" aria-label="网站分类"></nav>
 
-  <div class="search-bar">
-    <input type="search" id="search-input" placeholder="搜索你感兴趣的网站..." autocomplete="off">
+    <div class="search-bar">
+      <input type="search" id="search-input" aria-label="搜索网站" title="搜索网站" placeholder="搜索你感兴趣的网站..." autocomplete="off">
+    </div>
   </div>
 
   <main id="sections" aria-live="polite"></main>
