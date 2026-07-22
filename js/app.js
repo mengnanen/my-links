@@ -188,11 +188,33 @@ function renderNavigation() {
   requestAnimationFrame(() => moveIndicator(elements.tabs.querySelector(".tab.active")));
 }
 
+function scrollTabHorizontally(button, behavior = "smooth", center = false) {
+  if (!button) return;
+
+  const tabLeft = button.offsetLeft;
+  const tabRight = tabLeft + button.offsetWidth;
+  const visibleLeft = elements.tabs.scrollLeft;
+  const visibleRight = visibleLeft + elements.tabs.clientWidth;
+  let targetLeft = visibleLeft;
+
+  if (center) {
+    targetLeft = tabLeft - (elements.tabs.clientWidth - button.offsetWidth) / 2;
+  } else if (tabLeft < visibleLeft) {
+    targetLeft = tabLeft - 5;
+  } else if (tabRight > visibleRight) {
+    targetLeft = tabRight - elements.tabs.clientWidth + 5;
+  } else {
+    return;
+  }
+
+  elements.tabs.scrollTo({ left: Math.max(0, targetLeft), behavior });
+}
+
 function selectCategory(button) {
   elements.tabs.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"));
   button.classList.add("active");
   state.currentCategory = button.dataset.category;
-  button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  scrollTabHorizontally(button, "smooth", true);
   moveIndicator(button);
   filterCards();
 }
@@ -338,6 +360,8 @@ function bindTabDragging() {
 }
 
 function bindEvents() {
+  let layoutWidth = window.innerWidth;
+
   elements.searchInput.addEventListener("input", filterCards);
   elements.scrollTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -355,8 +379,10 @@ function bindEvents() {
     if (event.key === "Escape") hidePasswordModal();
   });
   window.addEventListener("resize", () => {
+    if (window.innerWidth === layoutWidth) return;
+    layoutWidth = window.innerWidth;
     const activeTab = elements.tabs.querySelector(".tab.active");
-    activeTab?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    scrollTabHorizontally(activeTab, "auto");
     moveIndicator(activeTab);
   });
   bindTabDragging();
