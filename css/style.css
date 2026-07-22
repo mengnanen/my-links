@@ -418,91 +418,19 @@
       color: #888;
     }
 
-    /* 分类整体模块与下一个模块之间的间距 */
-    .section {
-      margin-bottom: 25px;
-    }
-
-    /* 分类标题参数 */
-    .section-title {
-      display: flex;
-      align-items: center;
-      font-size: 1.1em;
-      font-weight: bold;
-      margin-bottom: 15px;/* 分类标题与卡片之间的间距 */
-      color: #333;
-    }
-
-    .category-icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 6px;
-      vertical-align: middle;
-    }
-
-    .section-action {
-      appearance: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 6px;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    /* 暗黑模式下分类标题参数 */
-    [data-theme='dark'] .section-title {
-      color: #ddd; /* 提升分类标题颜色 */
-    }
-
-    /* 分类图标参数 */
-    .section-title svg {
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-      fill: #666;
-    }
-
-    /* 暗黑模式分类图标颜色 */
-    [data-theme='dark'] .section-title svg {
-      fill: #aaa;
-    }
-
-    /* 展开/收起图标样式 */
-    .toggle-icon {
-      width: 20px;
-      height: 20px;
-      margin-left: 0;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      vertical-align: middle;
-      opacity: 1;
-    }
-
-    .toggle-icon:hover {
-      transform: scale(1.1);
-    }
-
-    /* 卡片容器默认显示 */
-    .card-container {
-      display: block;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    /* 收起状态 */
-    .card-container.collapsed {
-      display: none;
-    }
-
-    .card-grid {
+    /* 所有分类共用同一个连续卡片网格 */
+    #sections {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       max-width: 1400px;
       margin: 0 auto;
+    }
+
+    .section,
+    .card-container,
+    .card-grid {
+      display: contents;
     }
 
     /* 卡片样式：设置固定高度和固定宽度 */
@@ -738,21 +666,6 @@
       vertical-align: middle;
     }
 
-    /* 加密类别锁的图标 */
-    .lock-icon {
-      width: 20px;
-      height: 20px;
-      margin-left: 0;
-      cursor: pointer;
-      opacity: 1;
-      transition: opacity 0.2s ease;
-      vertical-align: middle;
-    }
-
-    .lock-icon:hover {
-      opacity: 1;
-    }
-
     /* 加密弹窗遮罩层 */
     .modal-overlay {
         display: none;
@@ -883,8 +796,11 @@
       .search-bar input:not(:placeholder-shown) {
         width: min(200px, calc(100vw - 74px));
       }
-      .card-grid {
+      #sections {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
+      }
+      .card {
+        min-width: 0;
       }
     }
