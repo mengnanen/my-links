@@ -1,11 +1,5 @@
 const CATEGORY_PASSWORD = "971008";
 const DEFAULT_ICON = "img/favicon.png";
-const TIME_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hourCycle: "h23",
-});
 const CATEGORY_TAB_ORDER = [
   "自建",
   "常用",
@@ -29,6 +23,7 @@ const state = {
 const elements = {
   greetingText: document.getElementById("greeting-text"),
   localTime: document.getElementById("local-time"),
+  clockDigits: [...document.querySelectorAll("[data-clock-index]")],
   tabs: document.getElementById("category-tabs"),
   sections: document.getElementById("sections"),
   searchInput: document.getElementById("search-input"),
@@ -49,19 +44,47 @@ function createElement(tag, className, text) {
 }
 
 function getGreeting(hour) {
-  if (hour < 5) return "夜深了";
-  if (hour < 11) return "早上好";
+  if (hour < 6) return "夜深了";
+  if (hour < 9) return "早上好";
+  if (hour < 12) return "上午好";
   if (hour < 14) return "中午好";
   if (hour < 18) return "下午好";
-  if (hour < 23) return "晚上好";
+  if (hour < 22) return "晚上好";
   return "夜深了";
+}
+
+function updateClockDigit(element, value) {
+  if (element.dataset.value === value) return;
+
+  const current = element.querySelector(".clock-digit-value:not(.is-leaving)");
+  if (!element.dataset.value) {
+    current.textContent = value;
+    element.dataset.value = value;
+    return;
+  }
+
+  const next = createElement("span", "clock-digit-value is-entering", value);
+  element.appendChild(next);
+  current.classList.add("is-leaving");
+  void next.offsetHeight;
+  next.classList.remove("is-entering");
+  element.dataset.value = value;
+  window.setTimeout(() => current.remove(), 420);
 }
 
 function updateLocalTime() {
   const now = new Date();
+  const digits = [now.getHours(), now.getMinutes(), now.getSeconds()]
+    .map((value) => String(value).padStart(2, "0"))
+    .join("");
+
   elements.greetingText.textContent = getGreeting(now.getHours());
   elements.localTime.dateTime = now.toISOString();
-  elements.localTime.textContent = TIME_FORMATTER.format(now);
+  elements.localTime.setAttribute(
+    "aria-label",
+    `${digits.slice(0, 2)}:${digits.slice(2, 4)}:${digits.slice(4, 6)}`,
+  );
+  elements.clockDigits.forEach((element, index) => updateClockDigit(element, digits[index]));
 }
 
 function createTab(category, label, active = false) {
