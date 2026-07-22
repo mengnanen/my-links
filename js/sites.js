@@ -921,6 +921,12 @@ window.SITE_CATEGORIES = [
         "icon": "img/github.png",
         "name": "AutoBrightnessSwitcher",
         "description": "巨魔自动亮度切换器"
+      },
+      {
+        "url": "https://github.com/walt-chenp/AntForestTrollFools",
+        "icon": "img/github.png",
+        "name": "AntForestTrollFools",
+        "description": "蚂蚁森林自动收能量"
       }
     ]
   },
